@@ -1,7 +1,7 @@
 # SLU Laboratory Resources Management/
 #### URL
 
- - [SLU RM](https://themewagon.github.io/Notus-React/)
+ - [SLU RM](https://www.slu-laboratory-resources.engineering/)
 
 ## About School
 SLU or Saint Louis Univerity is a school offering various programs.
