@@ -20,6 +20,7 @@ export default function FooterSmall(props) {
                 <a
                   href="https://www.creative-tim.com/"
                   target="_blank"
+                  rel="noreferrer"
                   className="text-white hover:text-blueGray-300 text-sm font-semibold py-1"
                 >
                   Creative Tim
@@ -28,6 +29,7 @@ export default function FooterSmall(props) {
                 <a
                   href="https://themewagon.com/"
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="text-white hover:text-blueGray-300 text-sm font-semibold py-1"
                 >
                   {" "}ThemeWagon
@@ -40,6 +42,7 @@ export default function FooterSmall(props) {
                   <a
                     href="https://www.creative-tim.com/"
                     target="_blank"
+                    rel="noopener noreferrer"
                     className="text-white hover:text-blueGray-300 text-sm font-semibold block py-1 px-3"
                   >
                     Creative Tim

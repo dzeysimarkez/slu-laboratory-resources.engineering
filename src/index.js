@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter, Route, Switch, Redirect, HashRouter} from "react-router-dom";
+import { Route, Switch, Redirect, HashRouter} from "react-router-dom";
 
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -15,7 +15,7 @@ import Auth from "layouts/Auth.js";
 
 import Landing from "views/Landing.js";
 import Profile from "views/Profile.js";
-import Index from "views/Index.js";
+//import Index from "views/Index.js";
 
 ReactDOM.render(
   <HashRouter>
@@ -29,8 +29,7 @@ ReactDOM.render(
       <Route path="/"> 
        <Redirect from="*" to="/admin/tables" />
       </Route>
-      {/* add redirect for first page */}
-    //  
+ 
     </Switch>
   </HashRouter>,
   document.getElementById("root")

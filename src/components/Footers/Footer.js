@@ -158,6 +158,7 @@ export default function Footer() {
                   href="https://www.creative-tim.com/"
                   target="_blank"
                   className="text-blueGray-500 hover:text-blueGray-800"
+                  rel="noreferrer"
                 >
                   Creative Tim
                 </a>
@@ -169,6 +170,7 @@ export default function Footer() {
                   href="https://themewagon.com/"
                   className="text-blueGray-500 hover:text-blueGray-800"
                   target="_blank"
+                  rel="noopener noreferrer"
                 >
                   ThemeWagon
                 </a>

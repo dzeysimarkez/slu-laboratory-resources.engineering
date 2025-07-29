@@ -33,6 +33,7 @@ export default function Index() {
                 <a
                   href="https://www.creative-tim.com/learning-lab/tailwind/react/overview/notus?ref=nr-index&_ga=2.151943674.235871103.1753154769-1688634302.1752550566"
                     target="_blank"
+                    rel="noopener noreferrer"
                   
                   className="get-started text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-lightBlue-500 active:bg-lightBlue-600 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150"
                 >
@@ -41,6 +42,7 @@ export default function Index() {
                 <a
                   href="https://github.com/themewagon/Notus-React"
                     target="_blank"
+                    rel="noopener noreferrer"
                   className="github-star ml-1 text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-blueGray-700 active:bg-blueGray-600 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150"
                   
                 >
@@ -591,6 +593,7 @@ export default function Index() {
               <a
                 href="https://github.com/themewagon/Notus-React"
                 target="_blank"
+                rel="noopener noreferrer"
                 
                 className="github-star mt-4 inline-block text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-blueGray-700 active:bg-blueGray-600 uppercase text-sm shadow hover:shadow-lg"
               >
@@ -646,6 +649,7 @@ export default function Index() {
                 <a
                   href="https://www.creative-tim.com/learning-lab/tailwind/react/overview/notus?ref=nr-index&_ga=2.151943674.235871103.1753154769-1688634302.1752550566"
                     target="_blank"
+                    rel="noopener noreferrer"
                   
                   className="get-started text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-2 bg-lightBlue-500 active:bg-lightBlue-600 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150"
                 >
@@ -654,6 +658,7 @@ export default function Index() {
                 <a
                   href="https://github.com/themewagon/Notus-React"
                     target="_blank"
+                    rel="noopener noreferrer"
                   
                   className="github-star sm:ml-1 text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-blueGray-700 active:bg-blueGray-600 uppercase text-sm shadow hover:shadow-lg"
                 >

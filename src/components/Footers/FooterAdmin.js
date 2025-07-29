@@ -15,6 +15,7 @@ export default function FooterAdmin() {
                 href="https://www.creative-tim.com/"
                 className="text-blueGray-500 hover:text-blueGray-700 text-sm font-semibold py-1"
                 target="_blank"
+                rel="noreferrer"
                 >
                   Creative Tim 
                 </a>
@@ -23,6 +24,7 @@ export default function FooterAdmin() {
                 href="https://themewagon.com/"
                 className="text-blueGray-500 hover:text-blueGray-700 text-sm font-semibold py-1"
                 target="_blank"
+                rel="noopener noreferrer"
                 >
                   ThemeWagon
                 </a>
@@ -34,6 +36,7 @@ export default function FooterAdmin() {
                   <a
                     href="https://www.creative-tim.com/"
                     target="_blank"
+                    rel="noopener noreferrer"
                     className="text-blueGray-600 hover:text-blueGray-800 text-sm font-semibold block py-1 px-3"
                   >
                     Creative Tim
