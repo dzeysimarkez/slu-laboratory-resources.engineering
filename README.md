@@ -1,41 +1,25 @@
-# Notus-React Free React.js Tailwindcss Template
-#### Preview
+# SLU Laboratory Resources Management/
+#### URL
 
- - [Demo](https://themewagon.github.io/Notus-React/)
+ - [SLU RM](https://themewagon.github.io/Notus-React/)
 
-#### Download
- - [Download from ThemeWagon](https://themewagon.com/themes/notus-react/)
+## About School
+SLU or Saint Louis Univerity is a school offering various programs.
+This App is made for SLU-SEA (School of Engineering and Architecture) as part of their requirements for the completion of their course.
 
-## Getting Started
+## About this App
+This is a simple app is made for use by SLU-SEA students, teachers, and admin staff.
+Its purpose is to provide a platform in which they can store records and information about the equipment that their facility has such as the number of item a specific equipment or tool, its corresponding item number/tag, and which category does the item belong to.
 
-1. Clone Repository
-```
-git clone https://github.com/themewagon/Notus-React.git
-```
-2. Install Dependencies
-```
-npm i
-```
-3. Run the development server:
-
-```bash
-npm run start
-# or
-yarn start
-# or
-pnpm start
-# or
-bun start
-```
-
-## Author 
-```
-Design and code is completely written by Creative Tim design and development team.  
-```
+## Author
+JC Agapito
+JC Marquez
 
 ## License
+ - This software is proprietary and may not be copied, distributed, modified, or used in any way without the express written permission of the authors.
 
- - Design and Code is Copyright &copy; [Creative Tim](https://www.creative-tim.com/)
- - Licensed cover under [MIT]
- - Distributed by [ThemeWagon](https://themewagon.com)
+## Attribution
+ - This application incorporates elements licensed under the MIT license
+ - Design and part of the code is Copyright &copy; [Creative Tim](https://www.creative-tim.com/)
+ - Some parts of the App is Distributed by [ThemeWagon](https://themewagon.com)
 
