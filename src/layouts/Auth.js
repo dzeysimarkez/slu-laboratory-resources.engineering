@@ -1,10 +1,6 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 
-// components
-
-import FooterSmall from "components/Footers/FooterSmall.js";
-
 // views
 
 import Login from "views/auth/Login.js";
