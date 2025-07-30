@@ -27,7 +27,7 @@ ReactDOM.render(
       <Route path="/landing" exact component={Landing} />
       <Route path="/profile" exact component={Profile} />
       <Route path="/"> 
-       <Redirect from="*" to="/admin/tables" />
+       <Redirect from="*" to="/auth/login" />
       </Route>
  
     </Switch>
