@@ -3,7 +3,7 @@ import React from "react";
 // components
 
 import CardSettings from "components/Cards/CardSettings.js";
-import CardUserList from "components/Cards/CardUserList";
+import CardUserList from "components/Cards/CardUserList.js";
 //import CardProfile from "components/Cards/CardProfile.js";
 
 export default function Settings() {

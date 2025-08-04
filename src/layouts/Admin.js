@@ -7,7 +7,7 @@ import AdminNavbar from "components/Navbars/AdminNavbar.js";
 import Sidebar from "components/Sidebar/Sidebar.js";
 import HeaderStats from "components/Headers/HeaderStats.js";
 import FooterAdmin from "components/Footers/FooterAdmin.js";
-import PrivateRoute from "components/PrivateRoute";
+import PrivateRoute from "components/PrivateRoute.js";
 
 // views
 
