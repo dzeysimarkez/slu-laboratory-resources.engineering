@@ -1,8 +1,33 @@
-import React from "react";
-
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 // components
 
 export default function CardUserList() {
+
+  const [users, setUsers] = useState([]);
+  const [error, setError] = useState(null);
+  
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const response = await axios.get("/api/users");
+        setUsers(response.data.users);
+      } catch (err) {
+        setError(err);
+      }
+    }
+
+    fetchUsers();
+  }, []);
+
+  if(error) {
+    return (
+      <div className="text-center py-4 text-red-500">
+        <p>Error: {error}</p>
+      </div>
+    );
+  }
+
   return (
     <>
       <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
@@ -40,17 +65,26 @@ export default function CardUserList() {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                  JC
-                </th>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  jjjjcccc
-                </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  jc@test.data
-                </td>
-              </tr>
+
+              {users.length > 0 ? (
+                users.map((user) => (
+                  <tr>
+                    <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                      {user.firstName} {user.lastName}
+                    </th>
+                    <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                      jjjjcccc
+                    </td>
+                    <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                      {user.email}
+                    </td>
+                  </tr>
+                )
+                )) : (<tr>
+                  <td colSpan="3" className="text-center p-4">No users found.</td>
+                </tr>)
+              }
+
             </tbody>
           </table>
         </div>
