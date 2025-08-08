@@ -66,12 +66,16 @@ export default async function handler(req, res) {
     if (!isMatch) {
       return res.status(400).json({ msg: 'Invalid credentials' });
     }
+
+    //converts returned record as plain object
+    const userPlain = user.toObject();
+
     const userDetails = {
-      email: user.email,
-      firstName: user.firstName,
-      lastName: user.lastName,
-      address: user.address,
-      contactNumber: user.contactNumber
+      email: userPlain.email,
+      firstName: userPlain.firstName,
+      lastName: userPlain.lastName,
+      address: userPlain.address,
+      contactNumber: userPlain.contactNumber
     };
     // Success
     return res.status(200).json({ msg: 'Login successful', user: userDetails });
