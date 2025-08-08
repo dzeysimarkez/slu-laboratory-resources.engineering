@@ -65,9 +65,15 @@ export default async function handler(req, res) {
     if (!isMatch) {
       return res.status(400).json({ msg: 'Invalid credentials' });
     }
-
+    const userDetails = {
+      email: user.email,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      address: user.address,
+      contactNumber: user.contactNumber
+    };
     // Success
-    return res.status(200).json({ msg: 'Login successful' });
+    return res.status(200).json({ msg: 'Login successful', user: userDetails });
 
   } catch (err) {
     console.error(err.message);

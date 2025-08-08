@@ -55,6 +55,7 @@ const UserDropdown = () => {
           }
           onClick={(e) => {e.preventDefault();
             localStorage.removeItem("token");
+            localStorage.removeItem("user");
             sessionStorage.clear();
             routerHistory.push("/auth/login");
           }}
