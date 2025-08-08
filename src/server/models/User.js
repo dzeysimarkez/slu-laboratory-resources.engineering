@@ -1,6 +1,5 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
-// Define schema for User
 const UserSchema = new mongoose.Schema({
   email: {
     type: String,
@@ -10,7 +9,22 @@ const UserSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true
+  },
+  firstName: {
+    type: String,
+    required: true
+  },
+  lastName: {
+    type: String,
+    required: true
+  },
+  address: {
+    type: String,
+  },
+  contactNumber: {
+    type: String
   }
 });
 
-module.exports = mongoose.model('User', UserSchema);
+// Prevent model overwrite upon hot-reload in dev or serverless
+export default mongoose.models.User || mongoose.model('User', UserSchema);
