@@ -17,16 +17,16 @@ export default function FooterAdmin() {
                 target="_blank"
                 rel="noreferrer"
                 >
-                  Creative Tim 
+                  Saint Louis University 
                 </a>
-                {" | "}Distributed by{" "}
+                {" | "} College of Engineering and Architecture{" "}
                 <a
                 href="https://themewagon.com/"
                 className="text-blueGray-500 hover:text-blueGray-700 text-sm font-semibold py-1"
                 target="_blank"
                 rel="noopener noreferrer"
                 >
-                  ThemeWagon
+                  
                 </a>
               </div>
             </div>
@@ -39,7 +39,7 @@ export default function FooterAdmin() {
                     rel="noopener noreferrer"
                     className="text-blueGray-600 hover:text-blueGray-800 text-sm font-semibold block py-1 px-3"
                   >
-                    Creative Tim
+                    SLU
                   </a>
                 </li>
                 <li>
@@ -48,7 +48,7 @@ export default function FooterAdmin() {
                   to=""
                     className="text-blueGray-600 hover:text-blueGray-800 text-sm font-semibold block py-1 px-3"
                   >
-                    About Us
+                    
                   </Link>
                 </li>
                 <li>
@@ -57,7 +57,7 @@ export default function FooterAdmin() {
                   to=""
                     className="text-blueGray-600 hover:text-blueGray-800 text-sm font-semibold block py-1 px-3"
                   >
-                    Blog
+                    
                   </Link>
                 </li>
                 <li>
@@ -67,7 +67,7 @@ export default function FooterAdmin() {
                   
                     className="text-blueGray-600 hover:text-blueGray-800 text-sm font-semibold block py-1 px-3"
                   >
-                    MIT Licensee
+                    
                   </Link>
                 </li>
               </ul>
