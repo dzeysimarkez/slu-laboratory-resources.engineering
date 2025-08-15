@@ -6,12 +6,20 @@ import axios from "axios";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const routerHistory = useHistory();
 
   const handleLogin = async () => {
     try {
+      const backendUrl = process.env.REACT_APP_BACKEND_URL;
+
+      if (!backendUrl) {
+        setErrorMessage("Backend URL is not configured. Please check your environment variables.");
+        return;
+      }
+
       const response = await axios.post(
-        "/api/auth",
+        "${backendUrl}/api/auth",
         {
           email,
           password,
