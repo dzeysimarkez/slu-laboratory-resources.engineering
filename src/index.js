@@ -70,7 +70,7 @@ ReactDOM.render(
       {/* <Route path="/"> 
         <Redirect from="*" to="/auth/login" />
       </Route> */}
-      <Redirect to="/auth/login" />
+      {/* <Redirect to="/auth/login" /> */}
     </Switch>
   </BrowserRouter>,
   document.getElementById("root")
