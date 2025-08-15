@@ -28,8 +28,7 @@ ReactDOM.render(
       <Route path="/profile" exact component={Profile} />
 
       {/*route to item view*/}
-      {/* <Route path="/item/:id" component={ItemView}/>  */}
-      <Route path="/item/:id" render={() => <p>ItemView is mounting!</p>} />
+      <Route path="/item/:id" component={ItemView}/> 
 
       <Route path="/"> 
         <Redirect from="*" to="/auth/login" />
