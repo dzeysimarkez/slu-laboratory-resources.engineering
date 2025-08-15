@@ -38,7 +38,8 @@
 
 import React from "react";
 import ReactDOM from "react-dom";
-import { Route, Switch, Redirect, BrowserRouter } from "react-router-dom";
+import { Route, Switch, BrowserRouter } from "react-router-dom";
+// import { Route, Switch, Redirect, BrowserRouter } from "react-router-dom";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "assets/styles/tailwind.css";
