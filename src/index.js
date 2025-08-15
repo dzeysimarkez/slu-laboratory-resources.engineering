@@ -51,6 +51,8 @@ import Auth from "layouts/Auth.js";
 import Landing from "views/Landing.js";
 import Profile from "views/Profile.js";
 
+import ItemView from "views/user/ItemView.js";
+
 ReactDOM.render(
   <BrowserRouter>
     <Switch>
@@ -60,6 +62,9 @@ ReactDOM.render(
       {/* add routes without layouts */}
       <Route path="/landing" exact component={Landing} />
       <Route path="/profile" exact component={Profile} />
+
+      {/*route to item view*/}
+      <Route path="/item/:id" exact component={ItemView}/> 
       <Route path="/"> 
         <Redirect from="*" to="/auth/login" />
       </Route>
