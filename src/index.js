@@ -51,7 +51,7 @@ import Auth from "layouts/Auth.js";
 import Landing from "views/Landing.js";
 import Profile from "views/Profile.js";
 
-import ItemView from "views/user/ItemView.js";
+//import ItemView from "views/user/ItemView.js";
 
 ReactDOM.render(
   <BrowserRouter>
