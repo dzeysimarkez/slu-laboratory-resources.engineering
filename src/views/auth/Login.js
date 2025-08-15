@@ -31,7 +31,7 @@ export default function Login() {
         routerHistory.push("/admin/tables");
       }
     } catch (error) {
-      alert(error.response?.data?.msg || "Login failed");
+      setErrorMessage(error.response?.data?.msg || "Login failed");
     }
   };
 
