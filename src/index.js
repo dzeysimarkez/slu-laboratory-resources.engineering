@@ -67,9 +67,10 @@ ReactDOM.render(
       {/* <Route path="/item/:id" component={ItemView}/>  */}
       <Route path="/item/:id" render={() => <p>ItemView is mounting!</p>} />
 
-      <Route path="/"> 
+      {/* <Route path="/"> 
         <Redirect from="*" to="/auth/login" />
-      </Route>
+      </Route> */}
+      <Redirect to="/auth/login" />
     </Switch>
   </BrowserRouter>,
   document.getElementById("root")
