@@ -51,7 +51,7 @@
 //                     Adjustable Wrench
 //                   </h3>
 //                   <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600">
-//                     An adjustable wrench, also known as a crescent wrench, is a hand tool used to turn nuts, bolts, and other fasteners. It features a movable jaw that can be adjusted to fit different sizes of fasteners, making it a versatile tool. 
+//                     An adjustable wrench, also known as a crescent wrench, is a hand tool used to turn nuts, bolts, and other fasteners. It features a movable jaw that can be adjusted to fit different sizes of fasteners, making it a versatile tool.
 //                   </p>
 //                 </div>
 //               </div>
@@ -89,18 +89,22 @@ export default function ItemView() {
   useEffect(() => {
     async function fetchItem() {
       try {
-        // Replace this URL with your API endpoint
         const res = await fetch(`/api/items/${id}`);
         if (!res.ok) throw new Error("Failed to fetch item");
         const data = await res.json();
-        setItem(data);
+        if (!data.success || !data.data) {
+          throw new Error("Invalid API response");
+        }
+
+        // ✅ Store only the actual item object
+        setItem(data.data);
       } catch (err) {
         console.error("Error loading item:", err);
       }
     }
     fetchItem();
   }, [id]);
-
+  //if (error) return <p className="p-8 text-red-600">{error}</p>;
   if (!item) return <p className="p-8 text-lg">Loading...</p>;
 
   return (
