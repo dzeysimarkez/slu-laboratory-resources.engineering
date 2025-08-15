@@ -380,7 +380,7 @@ export default function CardTable({ color }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("/api/items/itemList")
+    fetch("https://slu-backend.vercel.app/api/itemList")
       .then((res) => res.json())
       .then((data) => {
         setItems(data);
