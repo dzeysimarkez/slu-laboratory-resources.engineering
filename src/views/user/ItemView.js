@@ -93,12 +93,6 @@ export default function ItemView() {
         if (!res.ok) throw new Error("Failed to fetch item");
         const data = await res.json();
         setItem(data.data);
-        if (!data.success || !data.data) {
-          throw new Error("Invalid API response");
-        }
-
-        // ✅ Store only the actual item object
-        setItem(data.data);
       } catch (err) {
         console.error("Error loading item:", err);
       }
