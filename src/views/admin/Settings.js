@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 // components
 
 import CardSettings from "components/Cards/CardSettings.js";
-import CardUserList from "components/Cards/CardUserList.js";
+// import CardUserList from "components/Cards/CardUserList.js";
 //import CardProfile from "components/Cards/CardProfile.js";
 
 export default function Settings() {
@@ -29,7 +29,7 @@ export default function Settings() {
           <CardSettings user={user} />
         </div>
         <div className="w-full lg:w-12/12 px-4">
-          <CardUserList />
+          {/* <CardUserList /> */}
         </div>
       </div>
     </>
