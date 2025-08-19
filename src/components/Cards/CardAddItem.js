@@ -98,7 +98,7 @@ export default function CardAddItem(props) {
                   >
                     Short Description
                   </label>
-                  <input
+                  <textarea
                     type="textarea"
                     name="shortDescription"
                     className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
@@ -123,8 +123,8 @@ export default function CardAddItem(props) {
                   >
                     Instructions
                   </label>
-                  <input
-                    type="testarea"
+                  <textarea
+                    type="textarea"
                     name="instructions"
                     className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                     value="Test"
