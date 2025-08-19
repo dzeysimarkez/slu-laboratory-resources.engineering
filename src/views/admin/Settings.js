@@ -36,7 +36,7 @@
 //   );
 // }
 import React, { useState, useEffect } from "react";
-import CardSettings from "./CardSettings"; // Assuming CardSettings is in the same directory
+import CardSettings from "components/Cards/CardSettings"; // Assuming CardSettings is in the same directory
 
 /**
  * Parent component that fetches user data from the backend and manages state.
