@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React  from "react";
+//import axios from "axios";
 
 export default function CardAddItem(props) {
   // const [formData, setFormData] = useState(props.user || {});
@@ -41,14 +41,14 @@ export default function CardAddItem(props) {
               onClick=""
               disabled=""
             >
-              {isSaving ? 'Saving...' : 'Save'}
+              {/* {isSaving ? 'Saving...' : 'Save'} */}
             </button>
           </div>
-          {message && (
+          {/* {message && (
             <p className={`mt-4 text-center ${message.includes('successfully') ? 'text-green-500' : 'text-red-500'}`}>
               {message}
             </p>
-          )}
+          )} */}
         </div>
         <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
           <form>
