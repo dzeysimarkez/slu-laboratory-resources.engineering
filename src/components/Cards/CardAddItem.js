@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import axios from "axios";
 
 export default function CardAddItem(props) {
-  const [formData, setFormData] = useState(props.user || {});
-  const [isSaving, setIsSaving] = useState(false);
-  const [message, setMessage] = useState('');
+  // const [formData, setFormData] = useState(props.user || {});
+  // const [isSaving, setIsSaving] = useState(false);
+  // const [message, setMessage] = useState('');
 
   // const handleInputChange = (e) => {
   //   const { name, value } = e.target;
@@ -38,8 +38,8 @@ export default function CardAddItem(props) {
             <button
               className="bg-lightBlue-500 text-white active:bg-lightBlue-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
               type="button"
-              onClick={handleSave}
-              disabled={isSaving}
+              onClick=""
+              disabled=""
             >
               {isSaving ? 'Saving...' : 'Save'}
             </button>
@@ -68,8 +68,8 @@ export default function CardAddItem(props) {
                     type="text"
                     name="itemName"
                     className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                    value={formData.firstName || ''}
-                    onChange={handleInputChange}
+                    value="Test"
+                    onChange="Test"
                   />
                 </div>
               </div>
@@ -85,8 +85,8 @@ export default function CardAddItem(props) {
                     type="text"
                     name="count"
                     className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                    value={formData.lastName || ''}
-                    onChange={handleInputChange}
+                    value="Test"
+                    onChange="Test"
                   />
                 </div>
               </div>
@@ -102,8 +102,8 @@ export default function CardAddItem(props) {
                     type="textarea"
                     name="shortDescription"
                     className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                    value={formData.email || ''}
-                    onChange={handleInputChange}
+                    value="Test"
+                    onChange="Test"
                   />
                 </div>
               </div>
@@ -127,8 +127,8 @@ export default function CardAddItem(props) {
                     type="testarea"
                     name="instructions"
                     className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                    value={formData.address || ''}
-                    onChange={handleInputChange}
+                    value="Test"
+                    onChange="Test"
                   />
                 </div>
               </div>
@@ -144,8 +144,8 @@ export default function CardAddItem(props) {
                     type="text"
                     name="contactNumber"
                     className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                    value={formData.contactNumber || ''}
-                    onChange={handleInputChange}
+                    value="Test"
+                    onChange="Test"
                   />
                 </div>
               </div>
