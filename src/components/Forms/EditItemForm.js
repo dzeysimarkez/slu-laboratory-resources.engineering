@@ -1,6 +1,7 @@
+// src/components/Forms/EditItemForm.js
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { toast } from "react-toastify"; // Import toast for notifications
+import { toast } from "react-toastify";
 
 const EditItemForm = ({ item, onUpdate, onClose }) => {
   const [formData, setFormData] = useState({
@@ -12,12 +13,11 @@ const EditItemForm = ({ item, onUpdate, onClose }) => {
     instructions: "",
   });
 
-  // Use a single useEffect hook that runs whenever the 'item' prop changes.
-  // This ensures the form is always populated with the correct data.
+  // This useEffect ensures the form state is updated whenever the 'item' prop changes.
   useEffect(() => {
     if (item) {
       setFormData({
-        _id: item._id,
+        _id: item._id || "",
         name: item.name || "",
         category: item.category || "",
         count: item.count || 0,
@@ -38,13 +38,9 @@ const EditItemForm = ({ item, onUpdate, onClose }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Call the onUpdate prop with the current form data
       await onUpdate(formData);
-      // Show success toast on successful update
-      toast.success("Item updated successfully!");
+      // The success toast is now handled by the parent component (Tables.js)
     } catch (error) {
-      // This catch block is more for a direct submit
-      // The update logic is now handled in Tables.js
       console.error("Failed to update item:", error);
       toast.error("Failed to update item.");
     }
