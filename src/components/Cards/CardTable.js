@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { toast } from "react-toastify"; // For user notifications
 
-export default function CardTable({ onEdit }) {
+export default function CardTable({ onEdit, onDelete }) {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -81,6 +81,9 @@ export default function CardTable({ onEdit }) {
                   Count
                 </th>
                 <th className="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-50 text-blueGray-500 border-blueGray-100">
+                  QR
+                </th>
+                <th className="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-50 text-blueGray-500 border-blueGray-100">
                   Actions
                 </th>
               </tr>
@@ -98,20 +101,36 @@ export default function CardTable({ onEdit }) {
                     <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                       {item.count}
                     </td>
+                    <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                      {item.qrCode && (
+                        <img
+                          src={item.qrCode}
+                          alt={`${item.name} QR Code`}
+                          className="w-12 h-12 rounded"
+                        />
+                      )}
+                    </td>
                     <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right">
                       <button
-                        className="bg-lightBlue-500 text-white active:bg-lightBlue-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none ease-linear transition-all duration-150"
+                        className="bg-lightBlue-500 text-white active:bg-lightBlue-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none ease-linear transition-all duration-150 mr-2"
                         type="button"
-                        onClick={() => onEdit(item)} 
+                        onClick={() => onEdit(item)}
                       >
                         Edit
+                      </button>
+                      <button
+                        className="bg-red-500 text-white active:bg-red-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none ease-linear transition-all duration-150"
+                        type="button"
+                        onClick={() => onDelete(item._id)}
+                      >
+                        Delete
                       </button>
                     </td>
                   </tr>
                 ))
               ) : (
                 <tr>
-                  <td colSpan="4" className="text-center p-4 text-blueGray-500">
+                  <td colSpan="5" className="text-center p-4 text-blueGray-500">
                     No items found.
                   </td>
                 </tr>
@@ -126,4 +145,5 @@ export default function CardTable({ onEdit }) {
 
 CardTable.propTypes = {
   onEdit: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired, // Added onDelete prop type validation
 };
