@@ -3,16 +3,44 @@ import EditItemModal from "../../components/Modals/EditItemModal";
 // import EditItemForm from "../../components/Forms/EditItemForm";
 export default function Register() {
     const [isModalOpen, setIsModalOpen] = useState(true);
+  const [mockData, setMockData] = useState(mockItem);
+
+  const handleUpdate = (updatedData) => {
+    console.log('Form submitted with data:', updatedData);
+    setMockData(updatedData);
+    setIsModalOpen(false); // Close the modal on submit
+  };
   return (
     <>
+    <div style={{ height: '2000px', padding: '50px' }}>
+      <h1>Modal Test Component</h1>
+      <button
+        onClick={() => setIsModalOpen(true)}
+        style={{
+          padding: '10px 20px',
+          backgroundColor: 'blue',
+          color: 'white',
+          border: 'none',
+          borderRadius: '5px',
+        }}
+      >
+        Open Modal
+      </button>
+
+      {isModalOpen && (
+        <EditItemModal onClose={() => setIsModalOpen(false)}>
+          <EditItemForm item={mockData} onUpdate={handleUpdate} />
+        </EditItemModal>
+      )}
+    </div>
     {/* <EditItemModal onClose={() => setIsModalOpen(false)}>
        <EditItemForm></EditItemForm> 
     </EditItemModal> */}
-          {isModalOpen && (
+          {/* {isModalOpen && (
             <EditItemModal onClose={() => setIsModalOpen(false)}>
-              {/* <EditItemForm item={selectedItem} onUpdate={handleUpdateItem} /> */}
+               <EditItemForm item={selectedItem} onUpdate={handleUpdateItem} /> 
             </EditItemModal>
-          )}
+          )} */}
       {/* <div className="container mx-auto px-4 h-full">
         <div className="flex content-center items-center justify-center h-full">
           <div className="w-full lg:w-6/12 px-4">
