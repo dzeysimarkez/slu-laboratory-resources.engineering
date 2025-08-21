@@ -55,23 +55,48 @@ export default function CardTable({ color, onEdit }) {
     }
   };
 
+  // const handleEdit = (itemId) => {
+  //   setLoading(true);
+  //   fetch(`${backendUrl}/api/items/${itemId}`)
+  //     .then((res) => {
+  //       // Check for a successful response (status code 200-299)
+  //       if (!res.ok) {
+  //         // If the response is not ok, throw an error
+  //         throw new Error("Could not fetch the item data from the server.");
+  //       }
+  //       // Assuming the server returns JSON, parse it
+  //       return res.json();
+  //     })
+  //     .then((data) => {
+  //       // The data object from the server should have a 'success' key
+  //       if (data.success) {
+  //         // The data you need is in the 'data' key of the response
+  //         onEdit(data.data);
+  //       } else {
+  //         toast.error("Failed to fetch item details.");
+  //       }
+  //     })
+  //     .catch((err) => {
+  //       console.error("Error fetching item for edit:", err);
+  //       toast.error("An error occurred. Please try again.");
+  //     })
+  //     .finally(() => {
+  //       setLoading(false);
+  //     });
+  // };
   const handleEdit = (itemId) => {
     setLoading(true);
     fetch(`${backendUrl}/api/items/${itemId}`)
       .then((res) => {
-        // Check for a successful response (status code 200-299)
         if (!res.ok) {
-          // If the response is not ok, throw an error
           throw new Error("Could not fetch the item data from the server.");
         }
-        // Assuming the server returns JSON, parse it
         return res.json();
       })
       .then((data) => {
-        // The data object from the server should have a 'success' key
-        if (data.success) {
-          // The data you need is in the 'data' key of the response
-          onEdit(data.data);
+        // Direct assignment because the backend returns the item data directly
+        if (data) {
+          onEdit(data);
         } else {
           toast.error("Failed to fetch item details.");
         }
