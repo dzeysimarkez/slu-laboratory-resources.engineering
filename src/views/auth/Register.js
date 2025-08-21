@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import EditItemModal from "../../components/Modals/EditItemModal";
-// import EditItemForm from "../../components/Forms/EditItemForm";
+import EditItemForm from "../../components/Forms/EditItemForm";
 export default function Register() {
     const [isModalOpen, setIsModalOpen] = useState(true);
   const [mockData, setMockData] = useState(mockItem);
