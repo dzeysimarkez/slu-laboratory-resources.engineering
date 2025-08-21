@@ -726,6 +726,7 @@ export default function CardTable({ color }) {
           setSelectedItem(data.data);
           setIsModalOpen(true);
           console.log("Modal state is now:", true);
+          console.log("Selected Item:", data.data);
         } else {
           toast.error("Failed to fetch item details.");
         }
