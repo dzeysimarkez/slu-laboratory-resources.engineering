@@ -8,6 +8,7 @@ export default function CardTable({ onEdit, onDelete, refreshKey }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
+  const [searchTerm, setSearchTerm] = useState("");
   const itemsPerPage = 5;
 
   useEffect(() => {
@@ -40,11 +41,17 @@ export default function CardTable({ onEdit, onDelete, refreshKey }) {
     fetchItems();
   }, [refreshKey]);
 
+  // Filter items based on the search term
+  const filteredItems = items.filter(item =>
+    item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    item.category.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   // Logic for displaying current items
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = items.slice(indexOfFirstItem, indexOfLastItem);
-  const totalPages = Math.ceil(items.length / itemsPerPage);
+  const currentItems = filteredItems.slice(indexOfFirstItem, indexOfLastItem);
+  const totalPages = Math.ceil(filteredItems.length / itemsPerPage);
 
   // Change page
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
@@ -74,6 +81,15 @@ export default function CardTable({ onEdit, onDelete, refreshKey }) {
               <h3 className="font-semibold text-lg text-blueGray-700">
                 Laboratory Resources
               </h3>
+            </div>
+            <div className="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
+              <input
+                type="text"
+                placeholder="Search..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm border border-blueGray-300 outline-none focus:outline-none focus:shadow-outline w-full pr-10"
+              />
             </div>
           </div>
         </div>
