@@ -664,6 +664,7 @@ import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import TableDropdown from "components/Dropdowns/TableDropdown.js";
 import EditItemModal from "components/Modals/EditItemModal.js"; // This component needs to be created
+import EditItemForm from "components/Forms/EditItemForm";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
