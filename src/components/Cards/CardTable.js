@@ -493,7 +493,7 @@
 // export default function CardTable({ color }) {
 //   const [items, setItems] = useState([]);
 //   const [loading, setLoading] = useState(true);
-  
+
 //   // New state variables for pagination
 //   const [currentPage, setCurrentPage] = useState(1);
 //   const itemsPerPage = 5;
@@ -664,8 +664,8 @@ import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import TableDropdown from "components/Dropdowns/TableDropdown.js";
 import EditItemModal from "components/Modals/EditItemModal.js"; // This component needs to be created
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function CardTable({ color }) {
   const [items, setItems] = useState([]);
@@ -724,7 +724,7 @@ export default function CardTable({ color }) {
         if (data.success) {
           setSelectedItem(data.data);
           setIsModalOpen(true);
-          console.log('Modal state is now:', true);
+          console.log("Modal state is now:", true);
         } else {
           toast.error("Failed to fetch item details.");
         }
@@ -741,9 +741,9 @@ export default function CardTable({ color }) {
   const handleUpdateItem = async (updatedData) => {
     try {
       const res = await fetch(`${backendUrl}/api/items/${updatedData._id}`, {
-        method: 'PUT',
+        method: "PUT",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(updatedData),
       });
@@ -766,7 +766,7 @@ export default function CardTable({ color }) {
     if (window.confirm("Are you sure you want to delete this item?")) {
       try {
         const res = await fetch(`${backendUrl}/api/items/${itemId}`, {
-          method: 'DELETE',
+          method: "DELETE",
         });
 
         if (res.ok) {
@@ -809,9 +809,7 @@ export default function CardTable({ color }) {
 
         <div className="block w-full overflow-x-auto">
           {loading ? (
-            <div className="p-6 text-center text-blueGray-500">
-              Loading...
-            </div>
+            <div className="p-6 text-center text-blueGray-500">Loading...</div>
           ) : (
             <>
               <table className="items-center w-full bg-transparent border-collapse">
@@ -906,14 +904,12 @@ export default function CardTable({ color }) {
           )}
         </div>
       </div>
-      
+
       {/* Modal for editing */}
       {isModalOpen && (
-        <EditItemModal
-          item={selectedItem}
-          onClose={() => setIsModalOpen(false)}
-          onUpdate={handleUpdateItem}
-        />
+        <EditItemModal onClose={() => setIsModalOpen(false)}>
+          <EditItemForm item={selectedItem} onUpdate={handleUpdateItem} />
+        </EditItemModal>
       )}
       <ToastContainer position="bottom-right" autoClose={3000} />
     </>
