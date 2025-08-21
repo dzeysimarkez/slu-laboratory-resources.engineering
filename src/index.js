@@ -6,10 +6,12 @@ import { Route, Switch, Redirect, BrowserRouter } from "react-router-dom";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "assets/styles/tailwind.css";
+import "react-toastify/dist/ReactToastify.css";
 
 // layouts
 import Admin from "layouts/Admin.js";
 import Auth from "layouts/Auth.js";
+
 
 // views without layouts
 import Landing from "views/Landing.js";
