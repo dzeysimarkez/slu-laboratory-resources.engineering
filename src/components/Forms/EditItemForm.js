@@ -1,85 +1,6 @@
-// import React, { useState, useEffect } from "react";
-
-// const EditItemForm = ({ item, onUpdate, onClose }) => {
-//   const [formData, setFormData] = useState({
-//     _id: '',
-//     name: '',
-//     category: '',
-//     count: 0,
-//     shortDescription: '',
-//     instructions: '',
-//   });
-
-//   useEffect(() => {
-//     // Populate the form with item data when the component mounts or item prop changes
-//     if (item) {
-//       setFormData({
-//         _id: item._id,
-//         name: item.name || '',
-//         category: item.category || '',
-//         count: item.count || 0,
-//         shortDescription: item.shortDescription || '',
-//         instructions: item.instructions || '',
-//       });
-//     }
-//   }, [item]);
-
-//   const handleChange = (e) => {
-//     const { name, value } = e.target;
-//     setFormData({ ...formData, [name]: value });
-//   };
-
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     onUpdate(formData);
-//   };
-
-//   return (
-//     <form onSubmit={handleSubmit}>
-//       <div className="space-y-4">
-//         <div>
-//           <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
-//           <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} required
-//                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" />
-//         </div>
-//         <div>
-//           <label htmlFor="category" className="block text-sm font-medium text-gray-700">Category</label>
-//           <input type="text" id="category" name="category" value={formData.category} onChange={handleChange} required
-//                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" />
-//         </div>
-//         <div>
-//           <label htmlFor="count" className="block text-sm font-medium text-gray-700">Count</label>
-//           <input type="number" id="count" name="count" value={formData.count} onChange={handleChange} required
-//                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" />
-//         </div>
-//         <div>
-//           <label htmlFor="shortDescription" className="block text-sm font-medium text-gray-700">Short Description</label>
-//           <textarea id="shortDescription" name="shortDescription" value={formData.shortDescription} onChange={handleChange}
-//                     className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"></textarea>
-//         </div>
-//         <div>
-//           <label htmlFor="instructions" className="block text-sm font-medium text-gray-700">Instructions</label>
-//           <textarea id="instructions" name="instructions" value={formData.instructions} onChange={handleChange}
-//                     className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"></textarea>
-//         </div>
-//       </div>
-//       <div className="mt-4 flex justify-end space-x-2">
-//         <button type="button" onClick={onClose}
-//                 className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-gray-700 bg-gray-200 hover:bg-gray-300 focus:outline-none">
-//           Cancel
-//         </button>
-//         <button type="submit"
-//                 className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none">
-//           Save Changes
-//         </button>
-//       </div>
-//     </form>
-//   );
-// };
-
-// export default EditItemForm;
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import { toast } from "react-toastify"; // Import toast for notifications
 
 const EditItemForm = ({ item, onUpdate, onClose }) => {
   const [formData, setFormData] = useState({
@@ -91,6 +12,8 @@ const EditItemForm = ({ item, onUpdate, onClose }) => {
     instructions: "",
   });
 
+  // Use a single useEffect hook that runs whenever the 'item' prop changes.
+  // This ensures the form is always populated with the correct data.
   useEffect(() => {
     if (item) {
       setFormData({
@@ -112,9 +35,19 @@ const EditItemForm = ({ item, onUpdate, onClose }) => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    onUpdate(formData);
+    try {
+      // Call the onUpdate prop with the current form data
+      await onUpdate(formData);
+      // Show success toast on successful update
+      toast.success("Item updated successfully!");
+    } catch (error) {
+      // This catch block is more for a direct submit
+      // The update logic is now handled in Tables.js
+      console.error("Failed to update item:", error);
+      toast.error("Failed to update item.");
+    }
   };
 
   return (
@@ -144,6 +77,7 @@ const EditItemForm = ({ item, onUpdate, onClose }) => {
                   <label htmlFor="name" className="block uppercase text-blueGray-600 text-xs font-bold mb-2">Item Name</label>
                   <input
                     type="text"
+                    id="name"
                     name="name"
                     className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                     value={formData.name}
@@ -156,6 +90,7 @@ const EditItemForm = ({ item, onUpdate, onClose }) => {
                   <label htmlFor="category" className="block uppercase text-blueGray-600 text-xs font-bold mb-2">Category</label>
                   <input
                     type="text"
+                    id="category"
                     name="category"
                     className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                     value={formData.category}
@@ -168,6 +103,7 @@ const EditItemForm = ({ item, onUpdate, onClose }) => {
                   <label htmlFor="count" className="block uppercase text-blueGray-600 text-xs font-bold mb-2">Count</label>
                   <input
                     type="number"
+                    id="count"
                     name="count"
                     className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                     value={formData.count}
@@ -179,6 +115,7 @@ const EditItemForm = ({ item, onUpdate, onClose }) => {
                 <div className="relative w-full mb-3">
                   <label htmlFor="shortDescription" className="block uppercase text-blueGray-600 text-xs font-bold mb-2">Short Description</label>
                   <textarea
+                    id="shortDescription"
                     name="shortDescription"
                     className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                     value={formData.shortDescription}
@@ -199,6 +136,7 @@ const EditItemForm = ({ item, onUpdate, onClose }) => {
                 <div className="relative w-full mb-3">
                   <label htmlFor="instructions" className="block uppercase text-blueGray-600 text-xs font-bold mb-2">Instructions</label>
                   <textarea
+                    id="instructions"
                     name="instructions"
                     className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                     value={formData.instructions}
@@ -207,9 +145,6 @@ const EditItemForm = ({ item, onUpdate, onClose }) => {
                 </div>
               </div>
             </div>
-
-            {/* No file inputs for editing, as per original code */}
-
             <div className="flex justify-end mt-6">
               <button
                 className="bg-red-500 text-white active:bg-red-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
@@ -227,7 +162,7 @@ const EditItemForm = ({ item, onUpdate, onClose }) => {
 };
 
 EditItemForm.propTypes = {
-  item: PropTypes.object.isRequired,
+  item: PropTypes.object,
   onUpdate: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,
 };

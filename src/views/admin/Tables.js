@@ -1,14 +1,12 @@
 // src/components/Tables.js
 import React, { useState } from "react";
+import { toast } from "react-toastify"; // Import toast for notifications
 
 // Components
 import CardTable from "components/Cards/CardTable.js";
 import EditItemForm from "components/Forms/EditItemForm";
 
 export default function Tables() {
-  // We'll use a single state to hold the item being edited.
-  // If `selectedItem` is null, we show the table.
-  // If `selectedItem` has an item object, we show the form.
   const [selectedItem, setSelectedItem] = useState(null);
 
   /**
@@ -23,15 +21,49 @@ export default function Tables() {
   };
 
   /**
+   * This function handles the logic for updating an item in the backend.
+   * It is called by handleUpdateItem.
+   * @param {object} itemData The data to be sent for the item update.
+   */
+  const updateItem = async (itemData) => {
+    try {
+      const backendUrl = "https://slu-backend.vercel.app";
+      const response = await fetch(`${backendUrl}/api/items/${itemData._id}`, {
+        method: 'PUT', // Use the PUT method for updates
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(itemData),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to update item on the server.");
+      }
+
+      // Check the response for the success flag from your backend
+      const result = await response.json();
+      if (result.success) {
+        toast.success("Item updated successfully!");
+      } else {
+        throw new Error(result.msg || "An unknown error occurred.");
+      }
+
+    } catch (err) {
+      console.error("Error updating item:", err);
+      toast.error(err.message);
+    }
+  };
+
+  /**
    * This function is passed to EditItemForm. It's called when the
    * user clicks the "Save Changes" button in the form.
    * @param {object} updatedData The item data with updated values.
    */
-  const handleUpdateItem = (updatedData) => {
-    // NOTE: This is where you would put your logic to update the item
-    // in your backend, using the updatedData object.
+  const handleUpdateItem = async (updatedData) => {
+    // Call the async function to handle the API request
+    await updateItem(updatedData);
     
-    // For now, we'll simply close the form by clearing the state.
+    // Clear the selected item to hide the form and show the table again
     setSelectedItem(null);
   };
 
