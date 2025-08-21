@@ -1,6 +1,16 @@
 import React, {useState} from "react";
 import EditItemModal from "../../components/Modals/EditItemModal";
 import EditItemForm from "../../components/Forms/EditItemForm";
+
+const mockItem = {
+  _id: '12345',
+  name: 'Sample Wrench',
+  category: 'Tools',
+  count: 15,
+  shortDescription: 'A versatile adjustable wrench.',
+  instructions: 'Use to tighten or loosen bolts.',
+};
+
 export default function Register() {
     const [isModalOpen, setIsModalOpen] = useState(true);
   const [mockData, setMockData] = useState(mockItem);
