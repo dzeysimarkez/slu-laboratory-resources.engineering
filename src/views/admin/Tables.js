@@ -8,6 +8,15 @@ import EditItemForm from "components/Forms/EditItemForm";
 
 export default function Tables() {
   const [selectedItem, setSelectedItem] = useState(null);
+  const [refreshKey, setRefreshKey] = useState(0);
+
+  /**
+   * Refreshes the CardTable component by changing the refreshKey state.
+   * This is a simple way to force a re-render and re-fetch of data.
+   */
+  const handleRefresh = () => {
+    setRefreshKey(prevKey => prevKey + 1);
+  };
 
   /**
    * This function is passed to CardTable. It's called when a user
@@ -65,6 +74,7 @@ export default function Tables() {
     
     // Clear the selected item to hide the form and show the table again
     setSelectedItem(null);
+    handleRefresh();
   };
 
   /**
@@ -74,6 +84,37 @@ export default function Tables() {
    */
   const handleCloseForm = () => {
     setSelectedItem(null);
+  };
+
+  /**
+   * This new function handles the deletion of an item.
+   * It will be passed as a prop to CardTable.
+   * @param {string} itemId The ID of the item to be deleted.
+   */
+  const handleDelete = async (itemId) => {
+    if (window.confirm("Are you sure you want to delete this item? This action cannot be undone.")) {
+      try {
+        const backendUrl = "https://slu-backend.vercel.app";
+        const response = await fetch(`${backendUrl}/api/items/${itemId}`, {
+          method: 'DELETE',
+        });
+
+        if (!response.ok) {
+          throw new Error("Failed to delete item on the server.");
+        }
+
+        const result = await response.json();
+        if (result.success) {
+          toast.success("Item deleted successfully!");
+          handleRefresh(); // Refresh the table after a successful deletion
+        } else {
+          throw new Error(result.msg || "An unknown error occurred during deletion.");
+        }
+      } catch (err) {
+        console.error("Error deleting item:", err);
+        toast.error(err.message);
+      }
+    }
   };
 
   return (
@@ -87,7 +128,7 @@ export default function Tables() {
             onClose={handleCloseForm}
           />
         ) : (
-          <CardTable onEdit={handleEdit} />
+          <CardTable onEdit={handleEdit} onDelete={handleDelete} key={refreshKey} />
         )}
       </div>
     </div>
