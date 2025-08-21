@@ -1,236 +1,129 @@
-import React, { useEffect, useState } from "react";
+// src/components/Cards/CardTable.js
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import TableDropdown from "components/Dropdowns/TableDropdown.js";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify"; // For user notifications
 
-export default function CardTable({ color, onEdit }) {
+export default function CardTable({ onEdit }) {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 5;
-
-  const backendUrl = "https://slu-backend.vercel.app";
-
-  const fetchItems = () => {
-    setLoading(true);
-    fetch(`${backendUrl}/api/itemList`)
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error(`HTTP error! status: ${res.status}`);
-        }
-        return res.json();
-      })
-      .then((data) => {
-        setItems(data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error("Error fetching items:", err);
-        setLoading(false);
-        toast.error("Failed to load items. Please check the network.");
-      });
-  };
+  const [error, setError] = useState(null);
 
   useEffect(() => {
+    async function fetchItems() {
+      try {
+        const backendUrl = "https://slu-backend.vercel.app";
+        const response = await fetch(`${backendUrl}/api/items`);
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        
+        if (data.success) {
+          setItems(data.data);
+          setError(null);
+        } else {
+          throw new Error(data.msg || "Failed to fetch items.");
+        }
+      } catch (err) {
+        console.error("Error fetching items:", err);
+        setError(err.message);
+        toast.error("Failed to load items. Please try again later.");
+      } finally {
+        setLoading(false);
+      }
+    }
+
     fetchItems();
   }, []);
 
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = items.slice(indexOfFirstItem, indexOfLastItem);
-  const totalPages = Math.ceil(items.length / itemsPerPage);
+  if (loading) {
+    return (
+      <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-white p-6">
+        <p className="text-center text-blueGray-600 font-bold">Loading items...</p>
+      </div>
+    );
+  }
 
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
-  const handleNextPage = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage(currentPage + 1);
-    }
-  };
-
-  const handlePrevPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
-    }
-  };
-
-  const handleEdit = (itemId) => {
-    setLoading(true);
-    fetch(`${backendUrl}/api/items/${itemId}`)
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error("Could not fetch the item data from the server.");
-        }
-        return res.json();
-      })
-      .then((data) => {
-        // Direct assignment because the backend returns the item data directly
-        if (data) {
-          onEdit(data);
-        } else {
-          toast.error("Failed to fetch item details.");
-        }
-      })
-      .catch((err) => {
-        console.error("Error fetching item for edit:", err);
-        toast.error("An error occurred. Please try again.");
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  };
-
-  const handleDelete = async (itemId) => {
-    if (window.confirm("Are you sure you want to delete this item?")) {
-      try {
-        const res = await fetch(`${backendUrl}/api/items/${itemId}`, {
-          method: "DELETE",
-        });
-
-        if (res.ok) {
-          toast.success("Item deleted successfully! 🗑️");
-          fetchItems();
-        } else {
-          const errorData = await res.json();
-          toast.error(`Failed to delete item: ${errorData.msg}`);
-        }
-      } catch (error) {
-        console.error("Error deleting item:", error);
-        toast.error("An error occurred while deleting the item.");
-      }
-    }
-  };
+  if (error) {
+    return (
+      <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-white p-6">
+        <p className="text-center text-red-600 font-bold">Error: {error}</p>
+      </div>
+    );
+  }
 
   return (
     <>
-      <div
-        className={
-          "relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded " +
-          (color === "light" ? "bg-white" : "bg-blueGray-700 text-white")
-        }
-      >
+      <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-white">
         <div className="rounded-t mb-0 px-4 py-3 border-0">
           <div className="flex flex-wrap items-center">
             <div className="relative w-full px-4 max-w-full flex-grow flex-1">
-              <h3
-                className={
-                  "font-semibold text-lg " +
-                  (color === "light" ? "text-blueGray-700" : "text-white")
-                }
-              >
-                Item List
+              <h3 className="font-semibold text-lg text-blueGray-700">
+                Laboratory Resources
               </h3>
             </div>
           </div>
         </div>
-
         <div className="block w-full overflow-x-auto">
-          {loading ? (
-            <div className="p-6 text-center text-blueGray-500">Loading...</div>
-          ) : (
-            <>
-              <table className="items-center w-full bg-transparent border-collapse">
-                <thead>
-                  <tr>
-                    <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                      Name
-                    </th>
-                    <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                      Category
-                    </th>
-                    <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                      Count
-                    </th>
-                    <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                      Image
-                    </th>
-                    <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                      Actions
-                    </th>
+          {/* Table */}
+          <table className="items-center w-full bg-transparent border-collapse">
+            <thead>
+              <tr>
+                <th className="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-50 text-blueGray-500 border-blueGray-100">
+                  Item Name
+                </th>
+                <th className="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-50 text-blueGray-500 border-blueGray-100">
+                  Category
+                </th>
+                <th className="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-50 text-blueGray-500 border-blueGray-100">
+                  Count
+                </th>
+                <th className="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-50 text-blueGray-500 border-blueGray-100">
+                  Actions
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {items.length > 0 ? (
+                items.map((item) => (
+                  <tr key={item._id}>
+                    <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                      {item.name}
+                    </td>
+                    <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                      {item.category}
+                    </td>
+                    <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                      {item.count}
+                    </td>
+                    <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right">
+                      <button
+                        className="bg-lightBlue-500 text-white active:bg-lightBlue-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none ease-linear transition-all duration-150"
+                        type="button"
+                        onClick={() => onEdit(item)} 
+                      >
+                        Edit
+                      </button>
+                    </td>
                   </tr>
-                </thead>
-                <tbody>
-                  {currentItems.map((item) => (
-                    <tr key={item._id}>
-                      <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        {item.name}
-                      </td>
-                      <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        {item.category || "-"}
-                      </td>
-                      <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        {item.count}
-                      </td>
-                      <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        {item.image ? (
-                          <img
-                            src={item.image}
-                            alt={item.name}
-                            className="h-12 w-12 object-cover rounded"
-                          />
-                        ) : (
-                          "-"
-                        )}
-                      </td>
-                      <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right">
-                        <TableDropdown
-                          itemId={item._id}
-                          onEdit={handleEdit}
-                          onDelete={handleDelete}
-                        />
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-
-              {items.length > itemsPerPage && (
-                <div className="flex justify-center mt-4 mb-4">
-                  <button
-                    onClick={handlePrevPage}
-                    disabled={currentPage === 1}
-                    className="mx-1 px-3 py-1 rounded-md text-sm font-semibold text-blueGray-600 border border-blueGray-300 disabled:opacity-50"
-                  >
-                    Previous
-                  </button>
-                  {[...Array(totalPages)].map((_, index) => (
-                    <button
-                      key={index}
-                      onClick={() => paginate(index + 1)}
-                      className={`mx-1 px-3 py-1 rounded-md text-sm font-semibold ${
-                        currentPage === index + 1
-                          ? "bg-blueGray-600 text-white"
-                          : "text-blueGray-600 border border-blueGray-300"
-                      }`}
-                    >
-                      {index + 1}
-                    </button>
-                  ))}
-                  <button
-                    onClick={handleNextPage}
-                    disabled={currentPage === totalPages}
-                    className="mx-1 px-3 py-1 rounded-md text-sm font-semibold text-blueGray-600 border border-blueGray-300 disabled:opacity-50"
-                  >
-                    Next
-                  </button>
-                </div>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan="4" className="text-center p-4 text-blueGray-500">
+                    No items found.
+                  </td>
+                </tr>
               )}
-            </>
-          )}
+            </tbody>
+          </table>
         </div>
       </div>
-
-      <ToastContainer position="bottom-right" autoClose={3000} />
     </>
   );
 }
 
-CardTable.defaultProps = {
-  color: "light",
-};
-
 CardTable.propTypes = {
-  color: PropTypes.oneOf(["light", "dark"]),
   onEdit: PropTypes.func.isRequired,
 };
