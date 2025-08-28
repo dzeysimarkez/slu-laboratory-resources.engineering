@@ -137,7 +137,7 @@ export default function Login() {
                 </form>
               </div>
             </div>
-            <div className="flex flex-wrap mt-6 relative">
+            {/* <div className="flex flex-wrap mt-6 relative">
               <div className="w-1/2">
                 <a
                   href="#pablo"
@@ -152,7 +152,7 @@ export default function Login() {
                   <small>Create new account</small>
                 </Link>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
