@@ -1,9 +1,57 @@
-import React from "react";
+import React, {useState} from "react";
+import EditItemModal from "../../components/Modals/EditItemModal";
+import EditItemForm from "../../components/Forms/EditItemForm";
+
+const mockItem = {
+  _id: '12345',
+  name: 'Sample Wrench',
+  category: 'Tools',
+  count: 15,
+  shortDescription: 'A versatile adjustable wrench.',
+  instructions: 'Use to tighten or loosen bolts.',
+};
 
 export default function Register() {
+    const [isModalOpen, setIsModalOpen] = useState(true);
+  const [mockData, setMockData] = useState(mockItem);
+
+  const handleUpdate = (updatedData) => {
+    console.log('Form submitted with data:', updatedData);
+    setMockData(updatedData);
+    setIsModalOpen(false); // Close the modal on submit
+  };
   return (
     <>
-      <div className="container mx-auto px-4 h-full">
+    <div style={{ height: '2000px', padding: '50px' }}>
+      <h1>Modal Test Component</h1>
+      <button
+        onClick={() => setIsModalOpen(true)}
+        style={{
+          padding: '10px 20px',
+          backgroundColor: 'blue',
+          color: 'white',
+          border: 'none',
+          borderRadius: '5px',
+        }}
+      >
+        Open Modal
+      </button>
+
+      {isModalOpen && (
+        <EditItemModal onClose={() => setIsModalOpen(false)}>
+          <EditItemForm item={mockData} onUpdate={handleUpdate} />
+        </EditItemModal>
+      )}
+    </div>
+    {/* <EditItemModal onClose={() => setIsModalOpen(false)}>
+       <EditItemForm></EditItemForm> 
+    </EditItemModal> */}
+          {/* {isModalOpen && (
+            <EditItemModal onClose={() => setIsModalOpen(false)}>
+               <EditItemForm item={selectedItem} onUpdate={handleUpdateItem} /> 
+            </EditItemModal>
+          )} */}
+      {/* <div className="container mx-auto px-4 h-full">
         <div className="flex content-center items-center justify-center h-full">
           <div className="w-full lg:w-6/12 px-4">
             <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-200 border-0">
@@ -119,7 +167,7 @@ export default function Register() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 }

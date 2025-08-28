@@ -1,7 +1,78 @@
+// import React from "react";
+// import { createPopper } from "@popperjs/core";
+
+// const NotificationDropdown = () => {
+//   // dropdown props
+//   const [dropdownPopoverShow, setDropdownPopoverShow] = React.useState(false);
+//   const btnDropdownRef = React.createRef();
+//   const popoverDropdownRef = React.createRef();
+//   const openDropdownPopover = () => {
+//     createPopper(btnDropdownRef.current, popoverDropdownRef.current, {
+//       placement: "left-start",
+//     });
+//     setDropdownPopoverShow(true);
+//   };
+//   const closeDropdownPopover = () => {
+//     setDropdownPopoverShow(false);
+//   };
+//   return (
+//     <>
+//       <a
+//         className="text-blueGray-500 py-1 px-3"
+//         href="#pablo"
+//         ref={btnDropdownRef}
+//         onClick={(e) => {
+//           e.preventDefault();
+//           dropdownPopoverShow ? closeDropdownPopover() : openDropdownPopover();
+//         }}
+//       >
+//         <i className="fas fa-ellipsis-v"></i>
+//       </a>
+//       <div
+//         ref={popoverDropdownRef}
+//         className={
+//           (dropdownPopoverShow ? "block " : "hidden ") +
+//           "bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg min-w-48"
+//         }
+//       >
+//         <a
+//           href="#pablo"
+//           className={
+//             "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
+//           }
+//           onClick={(e) => e.preventDefault()}
+//         >
+//           Edit
+//         </a>
+//         <a
+//           href="#pablo"
+//           className={
+//             "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
+//           }
+//           onClick={(e) => e.preventDefault()}
+//         >
+//           Another action
+//         </a>
+//         <a
+//           href="#pablo"
+//           className={
+//             "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
+//           }
+//           onClick={(e) => e.preventDefault()}
+//         >
+//           Something else here
+//         </a>
+//       </div>
+//     </>
+//   );
+// };
+
+// export default NotificationDropdown;
 import React from "react";
 import { createPopper } from "@popperjs/core";
+import PropTypes from "prop-types";
 
-const NotificationDropdown = () => {
+const TableDropdown = ({ itemId, onEdit, onDelete }) => {
   // dropdown props
   const [dropdownPopoverShow, setDropdownPopoverShow] = React.useState(false);
   const btnDropdownRef = React.createRef();
@@ -15,6 +86,7 @@ const NotificationDropdown = () => {
   const closeDropdownPopover = () => {
     setDropdownPopoverShow(false);
   };
+
   return (
     <>
       <a
@@ -35,36 +107,36 @@ const NotificationDropdown = () => {
           "bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg min-w-48"
         }
       >
-        <a
-          href="#pablo"
-          className={
-            "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-          }
-          onClick={(e) => e.preventDefault()}
+        {/* Edit Action */}
+        <button
+          className="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700 text-left"
+          onClick={() => {
+            onEdit(itemId);
+            closeDropdownPopover();
+          }}
         >
           Edit
-        </a>
-        <a
-          href="#pablo"
-          className={
-            "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-          }
-          onClick={(e) => e.preventDefault()}
+        </button>
+
+        {/* Delete Action */}
+        <button
+          className="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-red-500 text-left"
+          onClick={() => {
+            onDelete(itemId);
+            closeDropdownPopover();
+          }}
         >
-          Another action
-        </a>
-        <a
-          href="#pablo"
-          className={
-            "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-          }
-          onClick={(e) => e.preventDefault()}
-        >
-          Something else here
-        </a>
+          Delete
+        </button>
       </div>
     </>
   );
 };
 
-export default NotificationDropdown;
+TableDropdown.propTypes = {
+  itemId: PropTypes.string.isRequired,
+  onEdit: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
+};
+
+export default TableDropdown;

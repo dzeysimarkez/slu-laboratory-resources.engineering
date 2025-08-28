@@ -1,488 +1,213 @@
-// import React from "react";
-// import PropTypes from "prop-types";
-
-// // components
-
-// import TableDropdown from "components/Dropdowns/TableDropdown.js";
-
-// export default function CardTable({ color }) {
-//   return (
-//     <>
-//       <div
-//         className={
-//           "relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded " +
-//           (color === "light" ? "bg-white" : "bg-lightBlue-900 text-white")
-//         }
-//       >
-//         <div className="rounded-t mb-0 px-4 py-3 border-0">
-//           <div className="flex flex-wrap items-center">
-//             <div className="relative w-full px-4 max-w-full flex-grow flex-1">
-//               <h3
-//                 className={
-//                   "font-semibold text-lg " +
-//                   (color === "light" ? "text-blueGray-700" : "text-white")
-//                 }
-//               >
-//                 Equipment List
-//               </h3>
-//             </div>
-//           </div>
-//         </div>
-//         <div className="block w-full overflow-x-auto">
-//           {/* Projects table */}
-//           <table className="items-center w-full bg-transparent border-collapse">
-//             <thead>
-//               <tr>
-//                 <th
-//                   className={
-//                     "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left " +
-//                     (color === "light"
-//                       ? "bg-blueGray-50 text-blueGray-500 border-blueGray-100"
-//                       : "bg-lightBlue-800 text-lightBlue-300 border-lightBlue-700")
-//                   }
-//                 >
-//                   Item Name
-//                 </th>
-//                 <th
-//                   className={
-//                     "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left " +
-//                     (color === "light"
-//                       ? "bg-blueGray-50 text-blueGray-500 border-blueGray-100"
-//                       : "bg-lightBlue-800 text-lightBlue-300 border-lightBlue-700")
-//                   }
-//                 >
-//                   Item Count
-//                 </th>
-//                 <th
-//                   className={
-//                     "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left " +
-//                     (color === "light"
-//                       ? "bg-blueGray-50 text-blueGray-500 border-blueGray-100"
-//                       : "bg-lightBlue-800 text-lightBlue-300 border-lightBlue-700")
-//                   }
-//                 >
-//                   Category
-//                 </th>
-//                 <th
-//                   className={
-//                     "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left " +
-//                     (color === "light"
-//                       ? "bg-blueGray-50 text-blueGray-500 border-blueGray-100"
-//                       : "bg-lightBlue-800 text-lightBlue-300 border-lightBlue-700")
-//                   }
-//                 ></th>
-//               </tr>
-//             </thead>
-//             <tbody>
-//               <tr>
-//                 <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
-//                   <img
-//                     src={require("assets/img/bootstrap.jpg")}
-//                     className="h-12 w-12 bg-white rounded-full border"
-//                     alt="..."
-//                   ></img>{" "}
-//                   <span
-//                     className={
-//                       "ml-3 font-bold " +
-//                       +(color === "light" ? "text-blueGray-600" : "text-white")
-//                     }
-//                   >
-//                     Argon Design System
-//                   </span>
-//                 </th>
-//                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-//                   $2,500 USD
-//                 </td>
-//                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-//                   pending
-//                 </td>
-//                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right">
-//                   <TableDropdown />
-//                 </td>
-//               </tr>
-//               {/* <tr>
-//                 <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
-//                   <img
-//                     src={require("assets/img/angular.jpg")}
-//                     className="h-12 w-12 bg-white rounded-full border"
-//                     alt="..."
-//                   ></img>{" "}
-//                   <span
-//                     className={
-//                       "ml-3 font-bold " +
-//                       +(color === "light" ? "text-blueGray-600" : "text-white")
-//                     }
-//                   >
-//                     Angular Now UI Kit PRO
-//                   </span>
-//                 </th>
-//                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-//                   $1,800 USD
-//                 </td>
-//                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-//                   <i className="fas fa-circle text-emerald-500 mr-2"></i>{" "}
-//                   completed
-//                 </td>
-//                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-//                   <div className="flex">
-//                     <img
-//                       src={require("assets/img/team-1-800x800.jpg")}
-//                       alt="..."
-//                       className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow"
-//                     ></img>
-//                     <img
-//                       src={require("assets/img/team-2-800x800.jpg")}
-//                       alt="..."
-//                       className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
-//                     ></img>
-//                     <img
-//                       src={require("assets/img/team-3-800x800.jpg")}
-//                       alt="..."
-//                       className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
-//                     ></img>
-//                     <img
-//                       src={require("assets/img/team-4-470x470.png")}
-//                       alt="..."
-//                       className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
-//                     ></img>
-//                   </div>
-//                 </td>
-//                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-//                   <div className="flex items-center">
-//                     <span className="mr-2">100%</span>
-//                     <div className="relative w-full">
-//                       <div className="overflow-hidden h-2 text-xs flex rounded bg-emerald-200">
-//                         <div
-//                           style={{ width: "100%" }}
-//                           className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-emerald-500"
-//                         ></div>
-//                       </div>
-//                     </div>
-//                   </div>
-//                 </td>
-//                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right">
-//                   <TableDropdown />
-//                 </td>
-//               </tr>
-//               <tr>
-//                 <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
-//                   <img
-//                     src={require("assets/img/sketch.jpg")}
-//                     className="h-12 w-12 bg-white rounded-full border"
-//                     alt="..."
-//                   ></img>{" "}
-//                   <span
-//                     className={
-//                       "ml-3 font-bold " +
-//                       +(color === "light" ? "text-blueGray-600" : "text-white")
-//                     }
-//                   >
-//                     Black Dashboard Sketch
-//                   </span>
-//                 </th>
-//                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-//                   $3,150 USD
-//                 </td>
-//                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-//                   <i className="fas fa-circle text-red-500 mr-2"></i> delayed
-//                 </td>
-//                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-//                   <div className="flex">
-//                     <img
-//                       src={require("assets/img/team-1-800x800.jpg")}
-//                       alt="..."
-//                       className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow"
-//                     ></img>
-//                     <img
-//                       src={require("assets/img/team-2-800x800.jpg")}
-//                       alt="..."
-//                       className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
-//                     ></img>
-//                     <img
-//                       src={require("assets/img/team-3-800x800.jpg")}
-//                       alt="..."
-//                       className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
-//                     ></img>
-//                     <img
-//                       src={require("assets/img/team-4-470x470.png")}
-//                       alt="..."
-//                       className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
-//                     ></img>
-//                   </div>
-//                 </td>
-//                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-//                   <div className="flex items-center">
-//                     <span className="mr-2">73%</span>
-//                     <div className="relative w-full">
-//                       <div className="overflow-hidden h-2 text-xs flex rounded bg-red-200">
-//                         <div
-//                           style={{ width: "73%" }}
-//                           className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-red-500"
-//                         ></div>
-//                       </div>
-//                     </div>
-//                   </div>
-//                 </td>
-//                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right">
-//                   <TableDropdown />
-//                 </td>
-//               </tr>
-//               <tr>
-//                 <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
-//                   <img
-//                     src={require("assets/img/react.jpg")}
-//                     className="h-12 w-12 bg-white rounded-full border"
-//                     alt="..."
-//                   ></img>{" "}
-//                   <span
-//                     className={
-//                       "ml-3 font-bold " +
-//                       +(color === "light" ? "text-blueGray-600" : "text-white")
-//                     }
-//                   >
-//                     React Material Dashboard
-//                   </span>
-//                 </th>
-//                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-//                   $4,400 USD
-//                 </td>
-//                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-//                   <i className="fas fa-circle text-teal-500 mr-2"></i> on
-//                   schedule
-//                 </td>
-//                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-//                   <div className="flex">
-//                     <img
-//                       src={require("assets/img/team-1-800x800.jpg")}
-//                       alt="..."
-//                       className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow"
-//                     ></img>
-//                     <img
-//                       src={require("assets/img/team-2-800x800.jpg")}
-//                       alt="..."
-//                       className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
-//                     ></img>
-//                     <img
-//                       src={require("assets/img/team-3-800x800.jpg")}
-//                       alt="..."
-//                       className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
-//                     ></img>
-//                     <img
-//                       src={require("assets/img/team-4-470x470.png")}
-//                       alt="..."
-//                       className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
-//                     ></img>
-//                   </div>
-//                 </td>
-//                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-//                   <div className="flex items-center">
-//                     <span className="mr-2">90%</span>
-//                     <div className="relative w-full">
-//                       <div className="overflow-hidden h-2 text-xs flex rounded bg-teal-200">
-//                         <div
-//                           style={{ width: "90%" }}
-//                           className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-teal-500"
-//                         ></div>
-//                       </div>
-//                     </div>
-//                   </div>
-//                 </td>
-//                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right">
-//                   <TableDropdown />
-//                 </td>
-//               </tr>
-//               <tr>
-//                 <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
-//                   <img
-//                     src={require("assets/img/vue.jpg")}
-//                     className="h-12 w-12 bg-white rounded-full border"
-//                     alt="..."
-//                   ></img>{" "}
-//                   <span
-//                     className={
-//                       "ml-3 font-bold " +
-//                       +(color === "light" ? "text-blueGray-600" : "text-white")
-//                     }
-//                   >
-//                     React Material Dashboard
-//                   </span>
-//                 </th>
-//                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-//                   $2,200 USD
-//                 </td>
-//                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-//                   <i className="fas fa-circle text-emerald-500 mr-2"></i>{" "}
-//                   completed
-//                 </td>
-//                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-//                   <div className="flex">
-//                     <img
-//                       src={require("assets/img/team-1-800x800.jpg")}
-//                       alt="..."
-//                       className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow"
-//                     ></img>
-//                     <img
-//                       src={require("assets/img/team-2-800x800.jpg")}
-//                       alt="..."
-//                       className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
-//                     ></img>
-//                     <img
-//                       src={require("assets/img/team-3-800x800.jpg")}
-//                       alt="..."
-//                       className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
-//                     ></img>
-//                     <img
-//                       src={require("assets/img/team-4-470x470.png")}
-//                       alt="..."
-//                       className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
-//                     ></img>
-//                   </div>
-//                 </td>
-//                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-//                   <div className="flex items-center">
-//                     <span className="mr-2">100%</span>
-//                     <div className="relative w-full">
-//                       <div className="overflow-hidden h-2 text-xs flex rounded bg-emerald-200">
-//                         <div
-//                           style={{ width: "100%" }}
-//                           className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-emerald-500"
-//                         ></div>
-//                       </div>
-//                     </div>
-//                   </div>
-//                 </td>
-//                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right">
-//                   <TableDropdown />
-//                 </td>
-//               </tr> */}
-//             </tbody>
-//           </table>
-//         </div>
-//       </div>
-//     </>
-//   );
-// }
-
-// CardTable.defaultProps = {
-//   color: "light",
-// };
-
-// CardTable.propTypes = {
-//   color: PropTypes.oneOf(["light", "dark"]),
-// };
-
-import React, { useEffect, useState } from "react";
+// src/components/Cards/CardTable.js
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import TableDropdown from "components/Dropdowns/TableDropdown.js";
+import { toast } from "react-toastify"; // For user notifications
 
-export default function CardTable({ color }) {
+export default function CardTable({ onEdit, onDelete, refreshKey }) {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [searchTerm, setSearchTerm] = useState("");
+  const itemsPerPage = 5;
 
   useEffect(() => {
-    fetch("https://slu-backend.vercel.app/api/itemList")
-      .then((res) => res.json())
-      .then((data) => {
-        setItems(data);
-        setLoading(false);
-      })
-      .catch((err) => {
+    async function fetchItems() {
+      try {
+        const backendUrl = "https://slu-backend.vercel.app";
+        const response = await fetch(`${backendUrl}/api/items`);
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        
+        if (data.success) {
+          setItems(data.data);
+          setError(null);
+        } else {
+          throw new Error(data.msg || "Failed to fetch items.");
+        }
+      } catch (err) {
         console.error("Error fetching items:", err);
+        setError(err.message);
+        toast.error("Failed to load items. Please try again later.");
+      } finally {
         setLoading(false);
-      });
-  }, []);
+      }
+    }
+
+    fetchItems();
+  }, [refreshKey]);
+
+  // Filter items based on the search term
+  const filteredItems = items.filter(item =>
+    item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    item.category.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  // Logic for displaying current items
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = filteredItems.slice(indexOfFirstItem, indexOfLastItem);
+  const totalPages = Math.ceil(filteredItems.length / itemsPerPage);
+
+  // Change page
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  if (loading) {
+    return (
+      <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-white p-6">
+        <p className="text-center text-blueGray-600 font-bold">Loading items...</p>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-white p-6">
+        <p className="text-center text-red-600 font-bold">Error: {error}</p>
+      </div>
+    );
+  }
 
   return (
     <>
-      <div
-        className={
-          "relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded " +
-          (color === "light" ? "bg-white" : "bg-blueGray-700 text-white")
-        }
-      >
+      <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-white">
         <div className="rounded-t mb-0 px-4 py-3 border-0">
           <div className="flex flex-wrap items-center">
             <div className="relative w-full px-4 max-w-full flex-grow flex-1">
-              <h3
-                className={
-                  "font-semibold text-lg " +
-                  (color === "light" ? "text-blueGray-700" : "text-white")
-                }
-              >
-                Item List
+              <h3 className="font-semibold text-lg text-blueGray-700">
+                Laboratory Resources
               </h3>
+            </div>
+            <div className="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
+              <input
+                type="text"
+                placeholder="Search..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm border border-blueGray-300 outline-none focus:outline-none focus:shadow-outline w-full pr-10"
+              />
             </div>
           </div>
         </div>
-
         <div className="block w-full overflow-x-auto">
-          {loading ? (
-            <div className="p-6 text-center text-blueGray-500">
-              Loading...
-            </div>
-          ) : (
-            <table className="items-center w-full bg-transparent border-collapse">
-              <thead>
-                <tr>
-                  <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                    Name
-                  </th>
-                  <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                    Category
-                  </th>
-                  <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                    Count
-                  </th>
-                  <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                    Image
-                  </th>
-                  <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                    Actions
-                  </th>
-                </tr>
-              </thead>
-
-              <tbody>
-                {items.map((item) => (
+          {/* Table */}
+          <table className="items-center w-full bg-transparent border-collapse">
+            <thead>
+              <tr>
+                <th className="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-50 text-blueGray-500 border-blueGray-100">
+                  Item Name
+                </th>
+                <th className="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-50 text-blueGray-500 border-blueGray-100">
+                  Category
+                </th>
+                <th className="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-50 text-blueGray-500 border-blueGray-100">
+                  Count
+                </th>
+                <th className="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-50 text-blueGray-500 border-blueGray-100">
+                  QR
+                </th>
+                <th className="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-50 text-blueGray-500 border-blueGray-100">
+                  Actions
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {currentItems.length > 0 ? (
+                currentItems.map((item) => (
                   <tr key={item._id}>
                     <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                       {item.name}
                     </td>
                     <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                      {item.category || "-"}
+                      {item.category}
                     </td>
                     <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                       {item.count}
                     </td>
                     <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                      {item.image ? (
+                      {item.qrCode && (
                         <img
-                          src={item.image}
-                          alt={item.name}
-                          className="h-12 w-12 object-cover rounded"
+                          src={item.qrCode}
+                          alt={`${item.name} QR Code`}
+                          className="w-12 h-12 rounded"
                         />
-                      ) : (
-                        "-"
                       )}
                     </td>
-                    <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right">
-                      <TableDropdown />
+                    <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                      <div className="flex">
+                        <button
+                          className="bg-lightBlue-500 text-white active:bg-lightBlue-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none ease-linear transition-all duration-150 mr-2"
+                          type="button"
+                          onClick={() => onEdit(item)}
+                        >
+                          Edit
+                        </button>
+                        <button
+                          className="bg-red-500 text-white active:bg-red-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none ease-linear transition-all duration-150"
+                          type="button"
+                          onClick={() => onDelete(item._id)}
+                        >
+                          Delete
+                        </button>
+                      </div>
                     </td>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          )}
+                ))
+              ) : (
+                <tr>
+                  <td colSpan="5" className="text-center p-4 text-blueGray-500">
+                    No items found.
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </table>
         </div>
       </div>
+      {/* Pagination */}
+      {totalPages > 1 && (
+        <div className="flex justify-center mt-4">
+          <nav className="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
+            <button
+              onClick={() => paginate(currentPage - 1)}
+              disabled={currentPage === 1}
+              className="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
+            >
+              Previous
+            </button>
+            {Array.from({ length: totalPages }, (_, i) => (
+              <button
+                key={i + 1}
+                onClick={() => paginate(i + 1)}
+                className={`relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium ${
+                  currentPage === i + 1
+                    ? 'bg-indigo-50 border-indigo-500 text-indigo-600'
+                    : 'bg-white text-gray-700 hover:bg-gray-50'
+                }`}
+              >
+                {i + 1}
+              </button>
+            ))}
+            <button
+              onClick={() => paginate(currentPage + 1)}
+              disabled={currentPage === totalPages}
+              className="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
+            >
+              Next
+            </button>
+          </nav>
+        </div>
+      )}
     </>
   );
 }
 
-CardTable.defaultProps = {
-  color: "light",
-};
-
 CardTable.propTypes = {
-  color: PropTypes.oneOf(["light", "dark"]),
+  onEdit: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
+  refreshKey: PropTypes.number.isRequired,
 };
