@@ -103,7 +103,7 @@ export default function CardUserList() {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get("/api/get-users");
+        const response = await axios.get("/api/get-all-users");
         
         // Defensive check to ensure response.data and response.data.users exist
         if (response.data && Array.isArray(response.data.users)) {
