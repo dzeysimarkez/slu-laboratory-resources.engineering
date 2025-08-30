@@ -1,25 +1,139 @@
+// // // // // import React, { useEffect, useState } from "react";
+// // // // // import axios from "axios";
+// // // // // // components
+
+// // // // // export default function CardUserList() {
+
+// // // // //   const [users, setUsers] = useState([]);
+// // // // //   const [error, setError] = useState(null);
+  
+// // // // //   useEffect(() => {
+// // // // //     const fetchUsers = async () => {
+// // // // //       try {
+// // // // //         const response = await axios.get("/api/users");
+// // // // //         setUsers(response.data.users);
+// // // // //       } catch (err) {
+// // // // //         setError(err);
+// // // // //       }
+// // // // //     }
+
+// // // // //     fetchUsers();
+// // // // //   }, []);
+
+// // // // //   if(error) {
+// // // // //     return (
+// // // // //       <div className="text-center py-4 text-red-500">
+// // // // //         <p>Error: {error}</p>
+// // // // //       </div>
+// // // // //     );
+// // // // //   }
+
+// // // // //   return (
+// // // // //     <>
+// // // // //       <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
+// // // // //         <div className="rounded-t mb-0 px-4 py-3 border-0">
+// // // // //           <div className="flex flex-wrap items-center">
+// // // // //             <div className="relative w-full px-4 max-w-full flex-grow flex-1">
+// // // // //               <h3 className="font-semibold text-base text-blueGray-700">
+// // // // //                 User List
+// // // // //               </h3>
+// // // // //             </div>
+// // // // //             <div className="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
+// // // // //               {/* <button
+// // // // //                 className="bg-indigo-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+// // // // //                 type="button"
+// // // // //               >
+// // // // //                 See all
+// // // // //               </button> */}
+// // // // //             </div>
+// // // // //           </div>
+// // // // //         </div>
+// // // // //         <div className="block w-full overflow-x-auto">
+// // // // //           {/* Projects table */}
+// // // // //           <table className="items-center w-full bg-transparent border-collapse">
+// // // // //             <thead>
+// // // // //               <tr>
+// // // // //                 <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+// // // // //                   Name
+// // // // //                 </th>
+// // // // //                 <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+// // // // //                   User Name
+// // // // //                 </th>
+// // // // //                 <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+// // // // //                   Email Address
+// // // // //                 </th>
+// // // // //               </tr>
+// // // // //             </thead>
+// // // // //             <tbody>
+
+// // // // //               {users.length > 0 ? (
+// // // // //                 users.map((user) => (
+// // // // //                   <tr>
+// // // // //                     <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+// // // // //                       {user.firstName} {user.lastName}
+// // // // //                     </th>
+// // // // //                     <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+// // // // //                       jjjjcccc
+// // // // //                     </td>
+// // // // //                     <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+// // // // //                       {user.email}
+// // // // //                     </td>
+// // // // //                   </tr>
+// // // // //                 )
+// // // // //                 )) : (<tr>
+// // // // //                   <td colSpan="3" className="text-center p-4">No users found.</td>
+// // // // //                 </tr>)
+// // // // //               }
+
+// // // // //             </tbody>
+// // // // //           </table>
+// // // // //         </div>
+// // // // //       </div>
+// // // // //     </>
+// // // // //   );
+// // // // // }
 // // // // import React, { useEffect, useState } from "react";
 // // // // import axios from "axios";
-// // // // // components
 
 // // // // export default function CardUserList() {
 
-// // // //   const [users, setUsers] = useState([]);
+// // // //   const [users, setUsers] = useState(null); // Initialize with null to track loading
 // // // //   const [error, setError] = useState(null);
   
 // // // //   useEffect(() => {
 // // // //     const fetchUsers = async () => {
 // // // //       try {
-// // // //         const response = await axios.get("/api/users");
-// // // //         setUsers(response.data.users);
+// // // //         const response = await axios.get("/api/get-all-users");
+        
+// // // //         // Defensive check to ensure response.data and response.data.users exist
+// // // //         if (response.data && Array.isArray(response.data.users)) {
+// // // //           setUsers(response.data.users);
+// // // //         } else {
+// // // //           // If the data is not in the expected format, treat it as an error
+// // // //           console.error("API response not in expected format:", response.data);
+// // // //           setError("Data format error. Please check the API response.");
+// // // //           setUsers([]);
+// // // //         }
+
 // // // //       } catch (err) {
-// // // //         setError(err);
+// // // //         console.error("Failed to fetch users:", err);
+// // // //         setError("Failed to connect to the server. Please check your network.");
 // // // //       }
 // // // //     }
 
 // // // //     fetchUsers();
 // // // //   }, []);
 
+// // // //   // Show a loading state while fetching data
+// // // //   if (users === null) {
+// // // //     return (
+// // // //       <div className="text-center py-4 text-blueGray-500">
+// // // //         <p>Loading user list...</p>
+// // // //       </div>
+// // // //     );
+// // // //   }
+
+// // // //   // Handle a fetch error
 // // // //   if(error) {
 // // // //     return (
 // // // //       <div className="text-center py-4 text-red-500">
@@ -37,14 +151,6 @@
 // // // //               <h3 className="font-semibold text-base text-blueGray-700">
 // // // //                 User List
 // // // //               </h3>
-// // // //             </div>
-// // // //             <div className="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
-// // // //               {/* <button
-// // // //                 className="bg-indigo-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-// // // //                 type="button"
-// // // //               >
-// // // //                 See all
-// // // //               </button> */}
 // // // //             </div>
 // // // //           </div>
 // // // //         </div>
@@ -65,26 +171,27 @@
 // // // //               </tr>
 // // // //             </thead>
 // // // //             <tbody>
-
 // // // //               {users.length > 0 ? (
 // // // //                 users.map((user) => (
-// // // //                   <tr>
+// // // //                   <tr key={user._id}>
 // // // //                     <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
 // // // //                       {user.firstName} {user.lastName}
 // // // //                     </th>
 // // // //                     <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-// // // //                       jjjjcccc
+// // // //                       {user.username}
 // // // //                     </td>
 // // // //                     <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
 // // // //                       {user.email}
 // // // //                     </td>
 // // // //                   </tr>
-// // // //                 )
-// // // //                 )) : (<tr>
-// // // //                   <td colSpan="3" className="text-center p-4">No users found.</td>
-// // // //                 </tr>)
-// // // //               }
-
+// // // //                 ))
+// // // //               ) : (
+// // // //                 <tr>
+// // // //                   <td colSpan="3" className="text-center p-4">
+// // // //                     No users found.
+// // // //                   </td>
+// // // //                 </tr>
+// // // //               )}
 // // // //             </tbody>
 // // // //           </table>
 // // // //         </div>
@@ -99,11 +206,34 @@
 
 // // //   const [users, setUsers] = useState(null); // Initialize with null to track loading
 // // //   const [error, setError] = useState(null);
-  
+// // //   const [isLoading, setIsLoading] = useState(true);
+
 // // //   useEffect(() => {
 // // //     const fetchUsers = async () => {
 // // //       try {
-// // //         const response = await axios.get("/api/get-all-users");
+// // //         // Retrieve the authentication token from localStorage
+// // //         const storedUser = localStorage.getItem('user');
+// // //         if (!storedUser) {
+// // //           setError("No user logged in. Cannot fetch user list.");
+// // //           setIsLoading(false);
+// // //           return;
+// // //         }
+        
+// // //         const parsedUser = JSON.parse(storedUser);
+// // //         const authToken = parsedUser.token; // Assuming the token is stored here
+
+// // //         if (!authToken) {
+// // //           setError("Authentication token is missing.");
+// // //           setIsLoading(false);
+// // //           return;
+// // //         }
+
+// // //         // Make the API call with the authentication token in the headers
+// // //         const response = await axios.get("/api/get-users", {
+// // //           headers: {
+// // //             Authorization: `Bearer ${authToken}`
+// // //           }
+// // //         });
         
 // // //         // Defensive check to ensure response.data and response.data.users exist
 // // //         if (response.data && Array.isArray(response.data.users)) {
@@ -118,6 +248,8 @@
 // // //       } catch (err) {
 // // //         console.error("Failed to fetch users:", err);
 // // //         setError("Failed to connect to the server. Please check your network.");
+// // //       } finally {
+// // //         setIsLoading(false);
 // // //       }
 // // //     }
 
@@ -125,7 +257,7 @@
 // // //   }, []);
 
 // // //   // Show a loading state while fetching data
-// // //   if (users === null) {
+// // //   if (isLoading) {
 // // //     return (
 // // //       <div className="text-center py-4 text-blueGray-500">
 // // //         <p>Loading user list...</p>
@@ -203,7 +335,6 @@
 // // import axios from "axios";
 
 // // export default function CardUserList() {
-
 // //   const [users, setUsers] = useState(null); // Initialize with null to track loading
 // //   const [error, setError] = useState(null);
 // //   const [isLoading, setIsLoading] = useState(true);
@@ -211,30 +342,8 @@
 // //   useEffect(() => {
 // //     const fetchUsers = async () => {
 // //       try {
-// //         // Retrieve the authentication token from localStorage
-// //         const storedUser = localStorage.getItem('user');
-// //         if (!storedUser) {
-// //           setError("No user logged in. Cannot fetch user list.");
-// //           setIsLoading(false);
-// //           return;
-// //         }
-        
-// //         const parsedUser = JSON.parse(storedUser);
-// //         const authToken = parsedUser.token; // Assuming the token is stored here
+// //         const response = await axios.get("/api/get-users");
 
-// //         if (!authToken) {
-// //           setError("Authentication token is missing.");
-// //           setIsLoading(false);
-// //           return;
-// //         }
-
-// //         // Make the API call with the authentication token in the headers
-// //         const response = await axios.get("/api/get-users", {
-// //           headers: {
-// //             Authorization: `Bearer ${authToken}`
-// //           }
-// //         });
-        
 // //         // Defensive check to ensure response.data and response.data.users exist
 // //         if (response.data && Array.isArray(response.data.users)) {
 // //           setUsers(response.data.users);
@@ -244,14 +353,13 @@
 // //           setError("Data format error. Please check the API response.");
 // //           setUsers([]);
 // //         }
-
 // //       } catch (err) {
 // //         console.error("Failed to fetch users:", err);
 // //         setError("Failed to connect to the server. Please check your network.");
 // //       } finally {
 // //         setIsLoading(false);
 // //       }
-// //     }
+// //     };
 
 // //     fetchUsers();
 // //   }, []);
@@ -266,7 +374,7 @@
 // //   }
 
 // //   // Handle a fetch error
-// //   if(error) {
+// //   if (error) {
 // //     return (
 // //       <div className="text-center py-4 text-red-500">
 // //         <p>Error: {error}</p>
@@ -280,9 +388,7 @@
 // //         <div className="rounded-t mb-0 px-4 py-3 border-0">
 // //           <div className="flex flex-wrap items-center">
 // //             <div className="relative w-full px-4 max-w-full flex-grow flex-1">
-// //               <h3 className="font-semibold text-base text-blueGray-700">
-// //                 User List
-// //               </h3>
+// //               <h3 className="font-semibold text-base text-blueGray-700">User List</h3>
 // //             </div>
 // //           </div>
 // //         </div>
@@ -335,15 +441,19 @@
 // import axios from "axios";
 
 // export default function CardUserList() {
+
 //   const [users, setUsers] = useState(null); // Initialize with null to track loading
 //   const [error, setError] = useState(null);
-//   const [isLoading, setIsLoading] = useState(true);
-
+  
 //   useEffect(() => {
 //     const fetchUsers = async () => {
 //       try {
-//         const response = await axios.get("/api/get-users");
+//         // Append a unique timestamp to the URL to bypass browser caching
+//         const apiUrl = `/api/get-all-users?_t=${new Date().getTime()}`;
 
+//         // Make the API call without an authentication token
+//         const response = await axios.get(apiUrl);
+        
 //         // Defensive check to ensure response.data and response.data.users exist
 //         if (response.data && Array.isArray(response.data.users)) {
 //           setUsers(response.data.users);
@@ -353,19 +463,18 @@
 //           setError("Data format error. Please check the API response.");
 //           setUsers([]);
 //         }
+
 //       } catch (err) {
 //         console.error("Failed to fetch users:", err);
 //         setError("Failed to connect to the server. Please check your network.");
-//       } finally {
-//         setIsLoading(false);
 //       }
-//     };
+//     }
 
 //     fetchUsers();
 //   }, []);
 
 //   // Show a loading state while fetching data
-//   if (isLoading) {
+//   if (users === null) {
 //     return (
 //       <div className="text-center py-4 text-blueGray-500">
 //         <p>Loading user list...</p>
@@ -374,7 +483,7 @@
 //   }
 
 //   // Handle a fetch error
-//   if (error) {
+//   if(error) {
 //     return (
 //       <div className="text-center py-4 text-red-500">
 //         <p>Error: {error}</p>
@@ -388,7 +497,9 @@
 //         <div className="rounded-t mb-0 px-4 py-3 border-0">
 //           <div className="flex flex-wrap items-center">
 //             <div className="relative w-full px-4 max-w-full flex-grow flex-1">
-//               <h3 className="font-semibold text-base text-blueGray-700">User List</h3>
+//               <h3 className="font-semibold text-base text-blueGray-700">
+//                 User List
+//               </h3>
 //             </div>
 //           </div>
 //         </div>
@@ -441,17 +552,19 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 export default function CardUserList() {
-
   const [users, setUsers] = useState(null); // Initialize with null to track loading
   const [error, setError] = useState(null);
   
+  // Define the base URL for your backend API
+  const backendBaseUrl = "https://slu-backend.vercel.app";
+
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        // Append a unique timestamp to the URL to bypass browser caching
-        const apiUrl = `/api/get-all-users?_t=${new Date().getTime()}`;
+        // Construct the full, absolute URL
+        const apiUrl = `${backendBaseUrl}/api/get-all-users?_t=${new Date().getTime()}`;
 
-        // Make the API call without an authentication token
+        // Make the API call with the correct absolute URL
         const response = await axios.get(apiUrl);
         
         // Defensive check to ensure response.data and response.data.users exist
