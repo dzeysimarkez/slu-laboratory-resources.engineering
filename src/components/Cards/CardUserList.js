@@ -449,7 +449,7 @@ export default function CardUserList() {
     const fetchUsers = async () => {
       try {
         // Append a unique timestamp to the URL to bypass browser caching
-        const apiUrl = `/api/get-users?_t=${new Date().getTime()}`;
+        const apiUrl = `/api/get-all-users?_t=${new Date().getTime()}`;
 
         // Make the API call without an authentication token
         const response = await axios.get(apiUrl);
