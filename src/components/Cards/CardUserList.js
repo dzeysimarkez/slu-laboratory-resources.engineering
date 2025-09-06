@@ -432,18 +432,18 @@ export default function CardUserList() {
                         <button
                           className="bg-lightBlue-500 text-white active:bg-lightBlue-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none ease-linear transition-all duration-150 mr-2"
                           type="button"
-                          onClick={() => handleEdit(user)}
+                          // onClick={() => handleEdit(user)}
+                          onClick={(e) => {
+                            e.stopPropagation(); // Stops the click from bubbling up
+                            handleEdit(user);
+                          }}
                         >
                           Edit
                         </button>
                         <button
                           className="bg-red-500 text-white active:bg-red-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none ease-linear transition-all duration-150"
                           type="button"
-                          // onClick={() => handleDelete(user._id)}
-                          onClick={(e) => {
-                            e.stopPropagation(); // Stops the click from bubbling up
-                            handleEdit(user);
-                          }}
+                          onClick={() => handleDelete(user._id)}
                         >
                           Delete
                         </button>
