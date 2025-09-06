@@ -3,13 +3,21 @@ import { Link } from "react-router-dom";
 
 // components
 
-import Navbar from "components/Navbars/AuthNavbar.js";
-import Footer from "components/Footers/Footer.js";
+
+import EditUserModal from "components/Modals/EditUserModal";
+import EditUserForm from "components/Forms/EditUserForm";
 
 export default function Landing() {
   return (
     <>
-      <Navbar transparent />
+      <EditUserModal onClose={() => setEditingUser(null)}>
+        <EditUserForm
+          user={editingUser}
+          onUpdate={null}
+          onCancel={() => setEditingUser(null)}
+        />
+      </EditUserModal>
+      {/* <Navbar transparent />
       <main>
         <div className="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75">
           <div
@@ -560,7 +568,7 @@ export default function Landing() {
           </div>
         </section>
       </main>
-      <Footer />
+      <Footer /> */}
     </>
   );
 }
