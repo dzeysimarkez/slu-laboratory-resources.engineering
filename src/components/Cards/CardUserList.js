@@ -289,7 +289,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import EditUserModal from "../Modals/EditUserModal";
-//import EditUserForm from "../Forms/EditUserForm";
+import EditUserForm from "../Forms/EditUserForm";
+
 
 export default function CardUserList() {
   const [users, setUsers] = useState(null);
@@ -341,20 +342,20 @@ export default function CardUserList() {
   };
 
   // New function to handle the API call and form submission
-  // const handleUpdateUser = async (updatedData) => {
-  //   try {
-  //     await axios.put(
-  //       `${backendBaseUrl}/api/update-user/${editingUser._id}`,
-  //       updatedData
-  //     );
-  //     toast.success("User updated successfully!");
-  //     setEditingUser(null);
-  //     setRefreshKey((prevKey) => prevKey + 1);
-  //   } catch (error) {
-  //     console.error("Failed to update user:", error);
-  //     toast.error("Failed to update user. Please try again.");
-  //   }
-  // };
+  const handleUpdateUser = async (updatedData) => {
+    try {
+      await axios.put(
+        `${backendBaseUrl}/api/update-user/${editingUser._id}`,
+        updatedData
+      );
+      toast.success("User updated successfully!");
+      setEditingUser(null);
+      setRefreshKey((prevKey) => prevKey + 1);
+    } catch (error) {
+      console.error("Failed to update user:", error);
+      toast.error("Failed to update user. Please try again.");
+    }
+  };
 
   const filteredUsers =
     users?.filter(
@@ -458,7 +459,7 @@ export default function CardUserList() {
           </table>
         </div>
       </div>
-      {/* {editingUser && (
+      {editingUser && (
         <EditUserModal onClose={() => setEditingUser(null)}>
           <EditUserForm
             user={editingUser}
@@ -466,15 +467,15 @@ export default function CardUserList() {
             onCancel={() => setEditingUser(null)}
           />
         </EditUserModal>
-      )} */}
-      {editingUser && (
+      )}
+      {/* {editingUser && (
         <EditUserModal onClose={() => setEditingUser(null)}>
           <div>
             <p>The modal container is working!</p>
             <button onClick={() => setEditingUser(null)}>Close</button>
           </div>
         </EditUserModal>
-      )}
+      )} */}
     </>
   );
 }

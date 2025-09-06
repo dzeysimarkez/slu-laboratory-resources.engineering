@@ -25,7 +25,7 @@ import React from "react";
 
 const EditUserModal = ({ children, onClose }) => {
   return (
-    <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50 flex justify-center items-center p-4" onClick={onClose}>
+    <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50 flex justify-center items-center p-4">
       {/* Modal content area, stops click event from propagating */}
       <div className="relative p-5 border shadow-lg rounded-md bg-white w-full max-w-md md:max-w-xl" onClick={e => e.stopPropagation()}>
         <div className="text-center">
