@@ -19,11 +19,11 @@ export default function Landing() {
 };
   return (
     <>
-      <EditUserModal onClose={() => setEditingUser(null)}>
+      <EditUserModal onClose={null}>
         <EditUserForm
           user={mockUser}
           onUpdate={null}
-          onCancel={() => setEditingUser(null)}
+          onCancel={null}
         />
       </EditUserModal>
       {/* <Navbar transparent />
