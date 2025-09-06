@@ -8,11 +8,20 @@ import EditUserModal from "components/Modals/EditUserModal";
 import EditUserForm from "components/Forms/EditUserForm";
 
 export default function Landing() {
+  const mockUser = {
+  address: "slu-admin-address",
+  contactNumber: "09123456789",
+  email: "admin@admin",
+  firstName: "slu-admin",
+  lastName: "slu-domain",
+  __v: 0,
+  _id: "688dd7f293960e025bf53d71",
+};
   return (
     <>
       <EditUserModal onClose={() => setEditingUser(null)}>
         <EditUserForm
-          user={editingUser}
+          user={mockUser}
           onUpdate={null}
           onCancel={() => setEditingUser(null)}
         />
