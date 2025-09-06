@@ -291,7 +291,6 @@ import { toast } from "react-toastify";
 import EditUserModal from "../Modals/EditUserModal";
 import EditUserForm from "../Forms/EditUserForm";
 
-
 export default function CardUserList() {
   const [users, setUsers] = useState(null);
   const [error, setError] = useState(null);
@@ -440,7 +439,11 @@ export default function CardUserList() {
                         <button
                           className="bg-red-500 text-white active:bg-red-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none ease-linear transition-all duration-150"
                           type="button"
-                          onClick={() => handleDelete(user._id)}
+                          // onClick={() => handleDelete(user._id)}
+                          onClick={(e) => {
+                            e.stopPropagation(); // Stops the click from bubbling up
+                            handleEdit(user);
+                          }}
                         >
                           Delete
                         </button>
