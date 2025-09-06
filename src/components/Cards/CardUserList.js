@@ -458,13 +458,21 @@ export default function CardUserList() {
           </table>
         </div>
       </div>
-      {editingUser && (
+      {/* {editingUser && (
         <EditUserModal onClose={() => setEditingUser(null)}>
           <EditUserForm
             user={editingUser}
             onUpdate={handleUpdateUser}
             onCancel={() => setEditingUser(null)}
           />
+        </EditUserModal>
+      )} */}
+      {editingUser && (
+        <EditUserModal onClose={() => setEditingUser(null)}>
+          <div>
+            <p>The modal container is working!</p>
+            <button onClick={() => setEditingUser(null)}>Close</button>
+          </div>
         </EditUserModal>
       )}
     </>
