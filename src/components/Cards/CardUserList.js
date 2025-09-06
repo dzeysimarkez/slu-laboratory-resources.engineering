@@ -4,7 +4,7 @@
 // // // export default function CardUserList() {
 // // //   const [users, setUsers] = useState(null); // Initialize with null to track loading
 // // //   const [error, setError] = useState(null);
-  
+
 // // //   // Define the base URL for your backend API
 // // //   const backendBaseUrl = "https://slu-backend.vercel.app";
 
@@ -16,7 +16,7 @@
 
 // // //         // Make the API call with the correct absolute URL
 // // //         const response = await axios.get(apiUrl);
-        
+
 // // //         // Defensive check to ensure response.data and response.data.users exist
 // // //         if (response.data && Array.isArray(response.data.users)) {
 // // //           setUsers(response.data.users);
@@ -123,7 +123,7 @@
 // //   const [searchTerm, setSearchTerm] = useState("");
 // //   const [refreshKey, setRefreshKey] = useState(0);
 // //   const [editingUser, setEditingUser] = useState(null); // State to hold the user being edited
-  
+
 // //   const backendBaseUrl = "https://slu-backend.vercel.app";
 
 // //   useEffect(() => {
@@ -131,7 +131,7 @@
 // //       try {
 // //         const apiUrl = `${backendBaseUrl}/api/get-all-users?_t=${new Date().getTime()}`;
 // //         const response = await axios.get(apiUrl);
-        
+
 // //         if (response.data && Array.isArray(response.data.users)) {
 // //           setUsers(response.data.users);
 // //         } else {
@@ -288,7 +288,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
-import EditUserModal from "../Modals/EditUserModal"; 
+import EditUserModal from "../Modals/EditUserModal";
 import EditUserForm from "../Forms/EditUserForm";
 
 export default function CardUserList() {
@@ -297,7 +297,7 @@ export default function CardUserList() {
   const [searchTerm, setSearchTerm] = useState("");
   const [refreshKey, setRefreshKey] = useState(0);
   const [editingUser, setEditingUser] = useState(null);
-  
+
   const backendBaseUrl = "https://slu-backend.vercel.app";
 
   useEffect(() => {
@@ -305,7 +305,7 @@ export default function CardUserList() {
       try {
         const apiUrl = `${backendBaseUrl}/api/get-all-users?_t=${new Date().getTime()}`;
         const response = await axios.get(apiUrl);
-        
+
         if (response.data && Array.isArray(response.data.users)) {
           setUsers(response.data.users);
         } else {
@@ -326,7 +326,7 @@ export default function CardUserList() {
       try {
         await axios.delete(`${backendBaseUrl}/api/delete-user/${userId}`);
         toast.success("User deleted successfully!");
-        setRefreshKey(prevKey => prevKey + 1);
+        setRefreshKey((prevKey) => prevKey + 1);
       } catch (err) {
         console.error("Failed to delete user:", err);
         toast.error("Failed to delete user. Please try again.");
@@ -335,26 +335,35 @@ export default function CardUserList() {
   };
 
   const handleEdit = (user) => {
+    console.log("Edit button was clicked.");
+    console.log("User data to be edited:", user);
     setEditingUser(user);
   };
-  
+
   // New function to handle the API call and form submission
   const handleUpdateUser = async (updatedData) => {
     try {
-      await axios.put(`${backendBaseUrl}/api/update-user/${editingUser._id}`, updatedData);
+      await axios.put(
+        `${backendBaseUrl}/api/update-user/${editingUser._id}`,
+        updatedData
+      );
       toast.success("User updated successfully!");
       setEditingUser(null);
-      setRefreshKey(prevKey => prevKey + 1);
+      setRefreshKey((prevKey) => prevKey + 1);
     } catch (error) {
       console.error("Failed to update user:", error);
       toast.error("Failed to update user. Please try again.");
     }
   };
 
-  const filteredUsers = users?.filter(user =>
-    `${user.firstName} ${user.lastName}`.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    user.email.toLowerCase().includes(searchTerm.toLowerCase())
-  ) || [];
+  const filteredUsers =
+    users?.filter(
+      (user) =>
+        `${user.firstName} ${user.lastName}`
+          .toLowerCase()
+          .includes(searchTerm.toLowerCase()) ||
+        user.email.toLowerCase().includes(searchTerm.toLowerCase())
+    ) || [];
 
   if (users === null) {
     return (
