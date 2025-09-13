@@ -360,6 +360,7 @@ import React, { useState } from "react";
 const EditUserForm = ({ user, onUpdate, onClose }) => {
   // Use a temporary state for form data
   const [formData, setFormData] = useState({
+     _id: user?._id || "",
     firstName: user?.firstName || "",
     lastName: user?.lastName || "",
     email: user?.email || "",
@@ -375,6 +376,7 @@ const EditUserForm = ({ user, onUpdate, onClose }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log("Data being sent from form:", formData);
     onUpdate(formData);
   };
 
