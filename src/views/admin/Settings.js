@@ -229,7 +229,7 @@ export default function Settings() {
     return; // Stop the function here to prevent the API call
   }
     try {
-      await axios.put(`${backendBaseUrl}/api/update-user/${updatedData._id}`, updatedData);
+      await axios.post(`${backendBaseUrl}/api/update-user/${updatedData._id}`, updatedData);
       toast.success("User updated successfully!");
       setUserToEdit(null); // Clear the editing state to return to the list
     } catch (error) {
