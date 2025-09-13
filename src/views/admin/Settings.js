@@ -217,6 +217,16 @@ export default function Settings() {
   // This function handles the actual form submission and API call for updating a user.
   // It is a placeholder; you'll need to implement your actual update logic here.
   const handleUpdate = async (updatedData) => {
+      // Check the ID before making the API call
+  // The 'updatedData' object comes from the form and should contain the ID
+  // However, it's safer to get the ID from the parent's state
+  const userId = userToEdit?._id;
+
+  if (!userId) {
+    console.error("User ID is missing! Cannot update.");
+    toast.error("User ID is missing. Please try again.");
+    return; // Stop the function here to prevent the API call
+  }
     try {
       await axios.put(`${backendBaseUrl}/api/update-user/${updatedData._id}`, updatedData);
       toast.success("User updated successfully!");
