@@ -662,8 +662,9 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { AiOutlineEdit, AiOutlineDelete } from "react-icons/ai";
-import EditUserModal from "./EditUserModal";
-import EditUserForm from "./EditUserForm";
+import EditUserModal from "../Modals/EditUserModal";
+import EditUserForm from "../Forms/EditUserForm";
+
 
 const CardUserList = () => {
   const [users, setUsers] = useState([]);
