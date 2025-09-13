@@ -169,7 +169,7 @@
 // src/components/Settings.js
 
 import React, { useState, useEffect } from "react";
-import CardSettings from "components/Cards/CardSettings";
+// import CardSettings from "components/Cards/CardSettings";
 import CardUserList from "components/Cards/CardUserList.js";
 import EditUserForm from "components/Forms/EditUserForm";
 import { toast } from "react-toastify";
@@ -266,7 +266,7 @@ export default function Settings() {
     <>
       <div className="flex flex-wrap">
         <div className="w-full px-4">
-          <CardSettings user={user} />
+          {/* <CardSettings user={user} /> */}
         </div>
         <div className="w-full lg:w-12/12 px-4">
           {/* Conditional Rendering */}
