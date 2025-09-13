@@ -221,6 +221,7 @@ export default function Settings() {
   // The 'updatedData' object comes from the form and should contain the ID
   // However, it's safer to get the ID from the parent's state
   const userId = userToEdit?._id;
+  console.log(userId);
 
   if (!userId) {
     console.error("User ID is missing! Cannot update.");
