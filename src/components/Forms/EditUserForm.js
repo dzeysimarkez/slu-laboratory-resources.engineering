@@ -899,7 +899,6 @@
 // export default EditUserForm;
 
 import React, { useState } from "react";
-import axios from "axios";
 import { toast } from "react-toastify"; // Import toast for user notifications
 
 const EditUserForm = ({ user, onUpdate, onClose }) => {
