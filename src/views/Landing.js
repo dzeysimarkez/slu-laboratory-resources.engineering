@@ -1,15 +1,32 @@
 import React from "react";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 
 // components
 
-import Navbar from "components/Navbars/AuthNavbar.js";
-import Footer from "components/Footers/Footer.js";
+
+import EditUserModal from "components/Modals/EditUserModal";
+import EditUserForm from "components/Forms/EditUserForm";
 
 export default function Landing() {
+  const mockUser = {
+  address: "slu-admin-address",
+  contactNumber: "09123456789",
+  email: "admin@admin",
+  firstName: "slu-admin",
+  lastName: "slu-domain",
+  __v: 0,
+  _id: "688dd7f293960e025bf53d71",
+};
   return (
     <>
-      <Navbar transparent />
+      <EditUserModal onClose={null}>
+        <EditUserForm
+          user={mockUser}
+          onUpdate={null}
+          onCancel={null}
+        />
+      </EditUserModal>
+      {/* <Navbar transparent />
       <main>
         <div className="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75">
           <div
@@ -560,7 +577,7 @@ export default function Landing() {
           </div>
         </section>
       </main>
-      <Footer />
+      <Footer /> */}
     </>
   );
 }
