@@ -340,6 +340,17 @@ export default function CardUserList() {
   
   // New function to handle the API call and form submission
   const handleUpdateUser = async (updatedData) => {
+    // Check what's being passed
+    console.log("Attempting to update user with data:", updatedData);
+    console.log("Editing user object is:", editingUser);
+    
+    // Check the ID before making the request
+    const userId = editingUser?._id;
+    if (!userId) {
+        console.error("User ID is missing!");
+        toast.error("User ID is missing. Cannot update.");
+        return; // Stop the function here
+    }
     try {
       await axios.put(`${backendBaseUrl}/api/update-user/${editingUser._id}`, updatedData);
       toast.success("User updated successfully!");
