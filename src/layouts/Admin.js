@@ -16,6 +16,7 @@ import Maps from "views/admin/Maps.js";
 import Settings from "views/admin/Settings.js";
 import Tables from "views/admin/Tables.js";
 import Items from "views/admin/Items.js";
+import AddUser from "views/admin/AddUser.js";
 
 export default function Admin() {
   return (
@@ -39,6 +40,7 @@ export default function Admin() {
             <PrivateRoute path="/admin/settings" exact component={Settings} />
             <PrivateRoute path="/admin/tables" exact component={Tables} />
             <PrivateRoute path="/admin/items" exact component={Items} />
+            <PrivateRoute path="/admin/adduser" exact component={AddUser} />
             <Redirect from="/admin" to="/admin/dashboard" />
           </Switch>
 
