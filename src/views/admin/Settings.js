@@ -280,7 +280,7 @@ export default function Settings() {
           ) : (
             // Otherwise, display the CardUserList
             // Pass the handleEdit function as a prop
-            <CardUserList onEdit={handleEdit} />
+            <CardUserList onEdit={handleEdit} loggedInUser={user}/>
           )}
         </div>
       </div>
