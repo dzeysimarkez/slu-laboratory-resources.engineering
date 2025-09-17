@@ -823,58 +823,115 @@ const AddUserForm = () => {
     setIsSaving(false);
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setPasswordError("");
-    setMessage("");
-    setMessageColor("");
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+//     setPasswordError("");
+//     setMessage("");
+//     setMessageColor("");
 
-    if (
-      !formData.firstName ||
-      !formData.lastName ||
-      !formData.email ||
-      !formData.password
-    ) {
-      displayMessage("Please fill in all required fields.", "text-red-500");
-      return;
-    }
+//     if (
+//       !formData.firstName ||
+//       !formData.lastName ||
+//       !formData.email ||
+//       !formData.password
+//     ) {
+//       displayMessage("Please fill in all required fields.", "text-red-500");
+//       return;
+//     }
 
-    if (formData.password !== formData.confirmPassword) {
-      setPasswordError("Passwords do not match.");
-      displayMessage("Passwords do not match. Please try again.", "text-red-500");
-      return;
-    }
+//     if (formData.password !== formData.confirmPassword) {
+//       setPasswordError("Passwords do not match.");
+//       displayMessage("Passwords do not match. Please try again.", "text-red-500");
+//       return;
+//     }
 
-    setIsSaving(true);
+//     setIsSaving(true);
 
-    try {
-      const newUserPayload = {
-        firstName: formData.firstName,
-        lastName: formData.lastName,
-        email: formData.email,
-        password: formData.password,
-      };
+//     try {
+//       const newUserPayload = {
+//         firstName: formData.firstName,
+//         lastName: formData.lastName,
+//         email: formData.email,
+//         password: formData.password,
+//       };
 
-      const response = await axios.post(
-        `${backendBaseUrl}/api/register`,
-        newUserPayload
-      );
+//       const response = await axios.post(
+//         `${backendBaseUrl}/api/register`,
+//         newUserPayload
+//       );
 
-      if (response.status === 201) {
-        displayMessage("User added successfully!", "text-green-500");
+//       if (response.status === 201) {
+//         displayMessage("User added successfully!", "text-green-500");
+//         resetForm();
+//       } else {
+//         displayMessage("Failed to add user.", "text-red-500");
+//       }
+//     } catch (error) {
+//       const msg = error.response?.data?.msg || "Failed to add user.";
+//       displayMessage(msg, "text-red-500");
+//       console.error("Add user failed:", error);
+//     } finally {
+//       setIsSaving(false);
+//     }
+//   };
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  setPasswordError("");
+  setMessage("");
+  setMessageColor("");
+
+  if (
+    !formData.firstName ||
+    !formData.lastName ||
+    !formData.email ||
+    !formData.password
+  ) {
+    displayMessage("Please fill in all required fields.", "text-red-500");
+    return;
+  }
+
+  if (formData.password !== formData.confirmPassword) {
+    setPasswordError("Passwords do not match.");
+    displayMessage("Passwords do not match. Please try again.", "text-red-500");
+    return;
+  }
+
+  setIsSaving(true);
+
+  try {
+    const newUserPayload = {
+      firstName: formData.firstName,
+      lastName: formData.lastName,
+      email: formData.email,
+      password: formData.password,
+    };
+
+    const response = await axios.post(
+      `${backendBaseUrl}/api/register`,
+      newUserPayload
+    );
+
+    if (response.status === 201) {
+      // First, display the success message
+      displayMessage("User added successfully!", "text-green-500");
+      
+      // Then, wait a few hundred milliseconds before resetting the form
+      // This gives the user time to see the success message
+      setTimeout(() => {
         resetForm();
-      } else {
-        displayMessage("Failed to add user.", "text-red-500");
-      }
-    } catch (error) {
-      const msg = error.response?.data?.msg || "Failed to add user.";
-      displayMessage(msg, "text-red-500");
-      console.error("Add user failed:", error);
-    } finally {
-      setIsSaving(false);
+      }, 500); // 500ms delay to allow the message to show
+    } else {
+      displayMessage("Failed to add user.", "text-red-500");
     }
-  };
-
+  } catch (error) {
+    const msg = error.response?.data?.msg || "Failed to add user.";
+    displayMessage(msg, "text-red-500");
+    console.error("Add user failed:", error);
+  } finally {
+    setIsSaving(false);
+  }
+};
   return (
     <form onSubmit={handleSubmit} className="p-4">
       <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0">
