@@ -12,7 +12,7 @@ export default function FooterAdmin() {
               <div className="text-sm text-blueGray-500 w-fit font-semibold py-1 text-center md:text-left">
                 Copyright © {new Date().getFullYear()}{" | "}
                 <a
-                href=""
+                href="https://https://www.slu-laboratory-resources.engineering/"
                 className="text-blueGray-500 hover:text-blueGray-700 text-sm font-semibold py-1"
                 target="_blank"
                 rel="noreferrer"
@@ -21,7 +21,7 @@ export default function FooterAdmin() {
                 </a>
                 This project is purely for educational and presentation purposes only{" "}
                 <a
-                href=""
+                href="https://https://www.slu-laboratory-resources.engineering/"
                 className="text-blueGray-500 hover:text-blueGray-700 text-sm font-semibold py-1"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -34,7 +34,7 @@ export default function FooterAdmin() {
               <ul className="flex flex-wrap list-none md:justify-end  justify-center">
                 <li>
                   <a
-                    href="https://www.creative-tim.com/"
+                    href="https://https://www.slu-laboratory-resources.engineering/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-blueGray-600 hover:text-blueGray-800 text-sm font-semibold block py-1 px-3"
