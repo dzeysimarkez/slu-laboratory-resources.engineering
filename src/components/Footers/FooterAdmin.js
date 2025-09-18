@@ -10,18 +10,18 @@ export default function FooterAdmin() {
           <div className="flex flex-wrap items-center md:justify-between justify-center">
             <div className="w-full md:w-6/12">
               <div className="text-sm text-blueGray-500 w-fit font-semibold py-1 text-center md:text-left">
-                Copyright © {new Date().getFullYear()}{" "}
+                Copyright © {new Date().getFullYear()}{" | "}
                 <a
-                href="https://www.creative-tim.com/"
+                href=""
                 className="text-blueGray-500 hover:text-blueGray-700 text-sm font-semibold py-1"
                 target="_blank"
                 rel="noreferrer"
                 >
-                  Saint Louis University 
+                  Disclaimer: 
                 </a>
-                {" | "} College of Engineering and Architecture{" "}
+                This project is purely for educational and presentation purposes only{" "}
                 <a
-                href="https://themewagon.com/"
+                href=""
                 className="text-blueGray-500 hover:text-blueGray-700 text-sm font-semibold py-1"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -39,7 +39,7 @@ export default function FooterAdmin() {
                     rel="noopener noreferrer"
                     className="text-blueGray-600 hover:text-blueGray-800 text-sm font-semibold block py-1 px-3"
                   >
-                    SLU
+                    
                   </a>
                 </li>
                 <li>
