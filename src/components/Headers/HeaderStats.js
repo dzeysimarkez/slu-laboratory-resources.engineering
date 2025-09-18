@@ -194,7 +194,7 @@ export default function HeaderStats() {
                   statPercent="100"
                   statPercentColor="text-emerald-500"
                   statDescripiron="Unique consumable entry"
-                  statIconName="fas fa-folder-open"
+                  statIconName="fas fa-box-open"
                   statIconColor="bg-pink-500"
                 />
               </div>
@@ -203,7 +203,7 @@ export default function HeaderStats() {
                   statSubtitle="Total Consumables"
                   statTitle={cardData?.totalConsumableCount?.toString() || "0"}
                   statDescripiron="Total count of all consumables"
-                  statIconName="fas fa-folder"
+                  statIconName="fas fa-boxes"
                   statIconColor="bg-lightBlue-500"
                 />
               </div>
