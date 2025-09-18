@@ -188,24 +188,21 @@ export default function HeaderStats() {
               </div>
               <div className="w-full lg:w-6/12 xl:w-3/12 px-4">
                 <CardStats
-                  statSubtitle="ACTIVE PAGES"
-                  statTitle={cardData?.activePagesCount?.toString() || "0"}
+                  statSubtitle="Unique Consumables"
+                  statTitle={cardData?.consumableUniqueItemsCount?.toString() || "0"}
                   statArrow="up"
                   statPercent="100"
                   statPercentColor="text-emerald-500"
-                  statDescripiron="Published and visible pages"
+                  statDescripiron="Unique consumable entry"
                   statIconName="fas fa-folder-open"
                   statIconColor="bg-pink-500"
                 />
               </div>
               <div className="w-full lg:w-6/12 xl:w-3/12 px-4">
                 <CardStats
-                  statSubtitle="INACTIVE PAGES"
-                  statTitle={cardData?.inactivePagesCount?.toString() || "0"}
-                  statArrow="down"
-                  statPercent="100"
-                  statPercentColor="text-red-500"
-                  statDescripiron="Pages under maintenance"
+                  statSubtitle="Total Consumables"
+                  statTitle={cardData?.totalConsumableCount?.toString() || "0"}
+                  statDescripiron="Total count of all consumables"
                   statIconName="fas fa-folder"
                   statIconColor="bg-lightBlue-500"
                 />
