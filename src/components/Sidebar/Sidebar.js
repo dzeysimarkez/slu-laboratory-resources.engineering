@@ -449,13 +449,13 @@ export default function Sidebar() {
               </h6>
               <div className="flex flex-col gap-4">
                 <a href="https://sdgs.un.org/goals/goal4" target="_blank" rel="noopener noreferrer">
-                  <img src="https://sustainabledevelopment.un.org/content/images/E_SDG_Icons-04.png" alt="SDG 4: Quality Education" className="w-20 h-20" />
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Sustainable_Development_Goal_4.png" alt="SDG 4: Quality Education" className="w-20 h-20" />
                 </a>
                 <a href="https://sdgs.un.org/goals/goal9" target="_blank" rel="noopener noreferrer">
-                  <img src="https://sustainabledevelopment.un.org/content/images/E_SDG_Icons-09.png" alt="SDG 9: Industry, Innovation and Infrastructure" className="w-20 h-20" />
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/c/cc/Sustainable_Development_Goal_9.png" alt="SDG 9: Industry, Innovation and Infrastructure" className="w-20 h-20" />
                 </a>
                 <a href="https://sdgs.un.org/goals/goal12" target="_blank" rel="noopener noreferrer">
-                  <img src="https://sustainabledevelopment.un.org/content/images/E_SDG_Icons-12.png" alt="SDG 12: Responsible Consumption and Production" className="w-20 h-20" />
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Sustainable_Development_Goal_12.png" alt="SDG 12: Responsible Consumption and Production" className="w-20 h-20" />
                 </a>
               </div>
             </div>
