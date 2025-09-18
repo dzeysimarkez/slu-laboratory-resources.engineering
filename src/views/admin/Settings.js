@@ -240,8 +240,15 @@ export default function Settings() {
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center h-screen">
-        <p className="text-lg">Loading...</p>
+      <div className="relative bg-lightBlue-600 md:pt-32 pb-32 pt-12">
+        <div className="px-4 md:px-10 mx-auto w-full">
+          <div className="flex flex-wrap -mx-4 justify-center items-center">
+            <div className="w-full text-center">
+              <i className="fas fa-spinner fa-pulse text-white text-4xl"></i>
+              <p className="text-white mt-2">Loading...</p>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
