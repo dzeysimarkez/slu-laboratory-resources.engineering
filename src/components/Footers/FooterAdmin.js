@@ -17,9 +17,9 @@ export default function FooterAdmin() {
                 target="_blank"
                 rel="noreferrer"
                 >
-                  Disclaimer: 
+                   
                 </a>
-                This project is purely for educational and presentation purposes only{" "}
+                Disclaimer: This project is purely for educational and presentation purposes only{" "}
                 <a
                 href="https://https://www.slu-laboratory-resources.engineering/"
                 className="text-blueGray-500 hover:text-blueGray-700 text-sm font-semibold py-1"
