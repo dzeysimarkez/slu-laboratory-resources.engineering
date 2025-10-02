@@ -539,7 +539,7 @@
 // // // // // // //     // --- START: Debugging code for 'undefined' user ID ---
 // // // // // // //     console.log("Attempting to update user with data:", updatedData);
 // // // // // // //     console.log("Editing user object is:", editingUser);
-    
+
 // // // // // // //     // Check for the user ID before making the request
 // // // // // // //     const userId = editingUser?._id;
 // // // // // // //     if (!userId) {
@@ -548,7 +548,7 @@
 // // // // // // //         return; // Stop the function here
 // // // // // // //     }
 // // // // // // //     // --- END: Debugging code ---
-    
+
 // // // // // // //     try {
 // // // // // // //       await axios.put(`${backendBaseUrl}/api/update-user/${userId}`, updatedData);
 // // // // // // //       toast.success("User updated successfully!");
@@ -632,7 +632,7 @@
 // // // // // //       try {
 // // // // // //         const apiUrl = `${backendBaseUrl}/api/get-all-users?_t=${new Date().getTime()}`;
 // // // // // //         const response = await axios.get(apiUrl);
-        
+
 // // // // // //         if (response.data && Array.isArray(response.data.users)) {
 // // // // // //           setUsers(response.data.users);
 // // // // // //         } else {
@@ -664,13 +664,13 @@
 // // // // // //   const handleEdit = (user) => {
 // // // // // //     setEditingUser(user);
 // // // // // //   };
-  
+
 // // // // // //   // New function to handle the API call and form submission
 // // // // // //   const handleUpdateUser = async (updatedData) => {
 // // // // // //     // Check what's being passed
 // // // // // //     console.log("Attempting to update user with data:", updatedData);
 // // // // // //     console.log("Editing user object is:", editingUser);
-    
+
 // // // // // //     // Check the ID before making the request
 // // // // // //     const userId = editingUser?._id;
 // // // // // //     if (!userId) {
@@ -809,7 +809,7 @@
 // // // // //       try {
 // // // // //         const apiUrl = `${backendBaseUrl}/api/get-all-users?_t=${new Date().getTime()}`;
 // // // // //         const response = await axios.get(apiUrl);
-        
+
 // // // // //         if (response.data && Array.isArray(response.data.users)) {
 // // // // //           setUsers(response.data.users);
 // // // // //         } else {
@@ -1492,7 +1492,7 @@
 // //       </div>
 // //     );
 // //   }
-  
+
 // //   // Guard clause to handle cases where loggedInUser is not yet available
 // //   if (!loggedInUser) {
 // //     return null;
@@ -1765,7 +1765,7 @@
 //       </div>
 //     );
 //   }
-  
+
 //   // Guard clause to handle cases where loggedInUser is not yet available
 //   if (!loggedInUser) {
 //     return null;
@@ -1963,7 +1963,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 // 1. ACCEPT THE NEW PROP: onAddUser
-export default function CardUserList({ onEdit, loggedInUser, onAddUser }) { 
+export default function CardUserList({ onEdit, loggedInUser, onAddUser }) {
   const [users, setUsers] = useState(null);
   const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
@@ -1985,13 +1985,13 @@ export default function CardUserList({ onEdit, loggedInUser, onAddUser }) {
           setUsers(response.data.users);
           setError(null);
         } else {
-            console.error("API response not in expected format:", response.data);
-            setError("Data format error. Please check the API response.");
-            setUsers([]);
+          console.error("API response not in expected format:", response.data);
+          setError("Data format error. Please check the API response.");
+          setUsers([]);
         }
       } catch (err) {
-          console.error("Failed to fetch users:", err);
-          setError("Failed to connect to the server. Please check your network.");
+        console.error("Failed to fetch users:", err);
+        setError("Failed to connect to the server. Please check your network.");
       }
     };
     fetchUsers();
@@ -2009,21 +2009,21 @@ export default function CardUserList({ onEdit, loggedInUser, onAddUser }) {
       setRefreshKey((prevKey) => prevKey + 1);
       setCurrentPage(1);
     } catch (err) {
-        console.error("Failed to delete user:", err);
-        toast.error("Failed to delete user. Please try again.");
+      console.error("Failed to delete user:", err);
+      toast.error("Failed to delete user. Please try again.");
     } finally {
-        setShowDeleteConfirm(false);
-        setUserToDeleteId(null);
+      setShowDeleteConfirm(false);
+      setUserToDeleteId(null);
     }
   };
 
   const filteredUsers =
     users?.filter(
-        (user) =>
-          `${user.firstName} ${user.lastName}`
-            .toLowerCase()
-            .includes(searchTerm.toLowerCase()) ||
-          user.email.toLowerCase().includes(searchTerm.toLowerCase())
+      (user) =>
+        `${user.firstName} ${user.lastName}`
+          .toLowerCase()
+          .includes(searchTerm.toLowerCase()) ||
+        user.email.toLowerCase().includes(searchTerm.toLowerCase())
     ) || [];
 
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -2058,28 +2058,20 @@ export default function CardUserList({ onEdit, loggedInUser, onAddUser }) {
     <>
       <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
         <div className="rounded-t mb-0 px-4 py-3 border-0">
-          <div className="flex flex-wrap items-center">
+          {/* The main row header: uses flex and justify-between to push the title and the actions apart */}
+          <div className="flex flex-wrap items-center justify-between">
+
+            {/* 1. Title stays on the left */}
             <div className="relative w-full px-4 max-w-full flex-grow flex-1">
               <h3 className="font-semibold text-base text-blueGray-700">
                 User List
               </h3>
             </div>
-            
-            {/* 2. ADD THE BUTTON AND ALIGN IT WITH THE SEARCH BAR */}
+
+            {/* 2. ACTIONS: Put search and button in a dedicated container to control their order */}
             <div className="relative w-full px-4 max-w-full flex-grow flex-1 flex justify-end items-center space-x-3">
-              
-              {/* Add New User Button - Only Super Admins can add users? Adjust logic if needed. */}
-              {loggedInUser.isSuperAdmin && (
-                <button
-                  className="bg-indigo-500 text-white active:bg-indigo-600 font-bold uppercase text-xs px-3 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none ease-linear transition-all duration-150"
-                  type="button"
-                  onClick={onAddUser} // Call the new prop function
-                >
-                  Add New User
-                </button>
-              )}
-              
-              {/* Search Input */}
+
+              {/* Search Input (Now positioned to the left of the button) */}
               <input
                 type="text"
                 placeholder="Search by name or email..."
@@ -2087,13 +2079,25 @@ export default function CardUserList({ onEdit, loggedInUser, onAddUser }) {
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="px-3 py-2 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm border border-blueGray-300 outline-none focus:outline-none focus:shadow-outline w-full sm:w-64"
               />
+
+              {/* Add New User Button - MOVED TO THE RIGHT and COLOR CHANGED TO GREEN */}
+              {loggedInUser.isSuperAdmin && (
+                <button
+                  // 3. COLOR CHANGE: bg-green-500, active:bg-green-600 (from indigo)
+                  className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-xs px-3 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none ease-linear transition-all duration-150"
+                  type="button"
+                  onClick={onAddUser}
+                >
+                  Add New User
+                </button>
+              )}
+
             </div>
-            
+
           </div>
         </div>
-        
         {/* ... rest of the component (table, pagination, modal) ... */}
-        
+
         <div className="block w-full overflow-x-auto">
           {/* ... table content ... */}
           <table className="items-center w-full bg-transparent border-collapse">
@@ -2129,10 +2133,9 @@ export default function CardUserList({ onEdit, loggedInUser, onAddUser }) {
                           <button
                             className={`
                               font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none ease-linear transition-all duration-150 mr-2
-                              ${
-                                isEditEnabled
-                                  ? "bg-lightBlue-500 text-white active:bg-lightBlue-600"
-                                  : "bg-gray-400 text-gray-700 cursor-not-allowed"
+                              ${isEditEnabled
+                                ? "bg-lightBlue-500 text-white active:bg-lightBlue-600"
+                                : "bg-gray-400 text-gray-700 cursor-not-allowed"
                               }
                             `}
                             type="button"
@@ -2144,11 +2147,10 @@ export default function CardUserList({ onEdit, loggedInUser, onAddUser }) {
                           <button
                             className={`
                                font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none ease-linear transition-all duration-150
-                               ${
-                                  isDeleteEnabled
-                                    ? "bg-red-500 text-white active:bg-red-600"
-                                    : "bg-gray-400 text-gray-700 cursor-not-allowed"
-                                }
+                               ${isDeleteEnabled
+                                ? "bg-red-500 text-white active:bg-red-600"
+                                : "bg-gray-400 text-gray-700 cursor-not-allowed"
+                              }
                               `}
                             type="button"
                             onClick={() => handleDeleteClick(user._id)}
@@ -2190,11 +2192,10 @@ export default function CardUserList({ onEdit, loggedInUser, onAddUser }) {
               <button
                 key={i + 1}
                 onClick={() => paginate(i + 1)}
-                className={`relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium ${
-                  currentPage === i + 1
+                className={`relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium ${currentPage === i + 1
                     ? "bg-indigo-50 border-indigo-500 text-indigo-600"
                     : "bg-white text-gray-700 hover:bg-gray-50"
-                }`}
+                  }`}
               >
                 {i + 1}
               </button>
