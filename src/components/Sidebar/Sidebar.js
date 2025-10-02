@@ -140,8 +140,7 @@ export default function Sidebar() {
                 >
                   <i
                     className={
-                      
-                      "fas fa-tools mr-2 text-sm " +
+                      "fas fa-solid fa-boxes-stacked mr-2 text-sm " +
                       (window.location.href.indexOf("/admin/items") !== -1
                         ? "opacity-75"
                         : "text-blueGray-300")
