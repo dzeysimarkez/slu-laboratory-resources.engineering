@@ -98,7 +98,7 @@
 // // // // //     <>
 // // // // //       <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
 // // // // //         <div className="rounded-t mb-0 px-4 py-3 border-0">
-          
+
 // // // // //           {/* Main row: Three-column layout for Title (Left), Search (Center), Button (Right) */}
 // // // // //           <div className="flex flex-wrap items-center">
 
@@ -137,7 +137,7 @@
 
 // // // // //           </div>
 // // // // //         </div>
-        
+
 // // // // //         <div className="block w-full overflow-x-auto">
 // // // // //           <table className="items-center w-full bg-transparent border-collapse">
 // // // // //             <thead>
@@ -408,7 +408,7 @@
 // // // //     <>
 // // // //       <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
 // // // //         <div className="rounded-t mb-0 px-4 py-3 border-0">
-          
+
 // // // //           {/* Main row: Three-column layout for Title (Left), Search (Center), Button (Right) */}
 // // // //           <div className="flex flex-wrap items-center">
 
@@ -447,7 +447,7 @@
 
 // // // //           </div>
 // // // //         </div>
-        
+
 // // // //         <div className="block w-full overflow-x-auto">
 // // // //           <table className="items-center w-full bg-transparent border-collapse">
 // // // //             <thead>
@@ -494,7 +494,7 @@
 // // // //                           >
 // // // //                             Edit
 // // // //                           </button>
-                          
+
 // // // //                           {/* **LOGIC CHANGE**: CONDITIONAL RENDERING (Hidden) instead of disabled */}
 // // // //                           {isDeleteEnabled && (
 // // // //                             <button
@@ -720,7 +720,7 @@
 // // //     <>
 // // //       <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
 // // //         <div className="rounded-t mb-0 px-4 py-3 border-0">
-          
+
 // // //           {/* Main row: Three-column layout for Title (Left), Search (Center), Button (Right) */}
 // // //           <div className="flex flex-wrap items-center">
 
@@ -759,7 +759,7 @@
 
 // // //           </div>
 // // //         </div>
-        
+
 // // //         <div className="block w-full overflow-x-auto">
 // // //           <table className="items-center w-full bg-transparent border-collapse">
 // // //             <thead>
@@ -779,7 +779,7 @@
 // // //               {currentUsers.length > 0 ? (
 // // //                 currentUsers.map((user) => {
 // // //                   const isEditEnabled = loggedInUser.isAdmin || loggedInUser._id === user._id;
-                  
+
 // // //                   // Delete is enabled only for SuperAdmin AND if the user is NOT the excluded admin email.
 // // //                   const isDeleteEnabled = loggedInUser.isSuperAdmin && user.email.toLowerCase() !== excludedEmail;
 
@@ -807,7 +807,7 @@
 // // //                           >
 // // //                             Edit
 // // //                           </button>
-                          
+
 // // //                           {/* CONDITIONAL RENDERING: Delete button is hidden if delete is not enabled */}
 // // //                           {isDeleteEnabled && (
 // // //                             <button
@@ -976,7 +976,7 @@
 // //       setCurrentPage(1);
 // //     } catch (err) {
 // //       console.error("Failed to delete user:", err);
-      
+
 // //       // Improved error message handling
 // //       if (err.response && err.response.status === 403) {
 // //           toast.error("Deletion forbidden: You cannot delete this core system account.");
@@ -1035,7 +1035,7 @@
 // //     <>
 // //       <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
 // //         <div className="rounded-t mb-0 px-4 py-3 border-0">
-          
+
 // //           {/* Main row: Three-column layout for Title (Left), Search (Center), Button (Right) */}
 // //           <div className="flex flex-wrap items-center">
 
@@ -1074,7 +1074,7 @@
 
 // //           </div>
 // //         </div>
-        
+
 // //         <div className="block w-full overflow-x-auto">
 // //           <table className="items-center w-full bg-transparent border-collapse">
 // //             <thead>
@@ -1094,7 +1094,7 @@
 // //               {currentUsers.length > 0 ? (
 // //                 currentUsers.map((user) => {
 // //                   const isEditEnabled = loggedInUser.isAdmin || loggedInUser._id === user._id;
-                  
+
 // //                   // Delete is enabled only for SuperAdmin AND if the user is NOT the excluded admin email.
 // //                   const isDeleteEnabled = loggedInUser.isSuperAdmin && user.email.toLowerCase() !== EXCLUDED_EMAIL_LOWERCASE;
 
@@ -1122,7 +1122,7 @@
 // //                           >
 // //                             Edit
 // //                           </button>
-                          
+
 // //                           {/* CONDITIONAL RENDERING: Delete button is hidden if delete is not enabled */}
 // //                           {isDeleteEnabled && (
 // //                             <button
@@ -1284,7 +1284,7 @@
 //   const handleDeleteClick = (userId) => {
 //     setConfirmingDeleteId(userId);
 //   };
-  
+
 //   // New handler to cancel the inline confirmation
 //   const handleCancelDelete = () => {
 //     setConfirmingDeleteId(null);
@@ -1293,7 +1293,7 @@
 
 //   const handleConfirmDelete = async () => {
 //     const userToDeleteId = confirmingDeleteId; // Get the ID from state
-    
+
 //     // Clear the confirmation state immediately to update the UI
 //     setConfirmingDeleteId(null); 
 
@@ -1306,7 +1306,7 @@
 //       setCurrentPage(1);
 //     } catch (err) {
 //       console.error("Failed to delete user:", err);
-      
+
 //       if (err.response && err.response.status === 403) {
 //           toast.error("Deletion forbidden: You cannot delete this core system account.");
 //       } else {
@@ -1358,7 +1358,7 @@
 //     <>
 //       <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
 //         <div className="rounded-t mb-0 px-4 py-3 border-0">
-          
+
 //           <div className="flex flex-wrap items-center">
 
 //             <div className="relative w-1/4 px-4 max-w-full flex-grow flex-1">
@@ -1391,7 +1391,7 @@
 
 //           </div>
 //         </div>
-        
+
 //         <div className="block w-full overflow-x-auto">
 //           <table className="items-center w-full bg-transparent border-collapse">
 //             <thead>
@@ -1412,7 +1412,7 @@
 //                 currentUsers.map((user) => {
 //                   const isEditEnabled = loggedInUser.isAdmin || loggedInUser._id === user._id;
 //                   const isDeleteEnabled = loggedInUser.isSuperAdmin && user.email.toLowerCase() !== EXCLUDED_EMAIL_LOWERCASE;
-                  
+
 //                   // Check if this row is the one showing the confirmation
 //                   const isConfirming = confirmingDeleteId === user._id;
 
@@ -1464,7 +1464,7 @@
 //                               >
 //                                 Edit
 //                               </button>
-                              
+
 //                               {isDeleteEnabled && (
 //                                 <button
 //                                   className="bg-red-500 text-white active:bg-red-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none ease-linear transition-all duration-150"
@@ -1518,7 +1518,7 @@ export default function CardUserList({ onEdit, loggedInUser, onAddUser }) {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
   // State to hold the _id of the user currently awaiting inline confirmation
-  const [confirmingDeleteId, setConfirmingDeleteId] = useState(null); 
+  const [confirmingDeleteId, setConfirmingDeleteId] = useState(null);
 
   const backendBaseUrl = "https://slu-backend.vercel.app";
 
@@ -1549,7 +1549,7 @@ export default function CardUserList({ onEdit, loggedInUser, onAddUser }) {
   const handleDeleteClick = (userId) => {
     setConfirmingDeleteId(userId);
   };
-  
+
   // Handler to cancel the inline confirmation
   const handleCancelDelete = () => {
     setConfirmingDeleteId(null);
@@ -1557,10 +1557,10 @@ export default function CardUserList({ onEdit, loggedInUser, onAddUser }) {
 
 
   const handleConfirmDelete = async () => {
-    const userToDeleteId = confirmingDeleteId; 
-    
+    const userToDeleteId = confirmingDeleteId;
+
     // Clear the confirmation state immediately to update the UI
-    setConfirmingDeleteId(null); 
+    setConfirmingDeleteId(null);
 
     if (!userToDeleteId) return;
 
@@ -1571,11 +1571,11 @@ export default function CardUserList({ onEdit, loggedInUser, onAddUser }) {
       setCurrentPage(1);
     } catch (err) {
       console.error("Failed to delete user:", err);
-      
+
       if (err.response && err.response.status === 403) {
-          toast.error("Deletion forbidden: You cannot delete this core system account.");
+        toast.error("Deletion forbidden: You cannot delete this core system account.");
       } else {
-          toast.error("Failed to delete user. Please try again.");
+        toast.error("Failed to delete user. Please try again.");
       }
     }
   };
@@ -1625,7 +1625,7 @@ export default function CardUserList({ onEdit, loggedInUser, onAddUser }) {
     <>
       <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
         <div className="rounded-t mb-0 px-4 py-3 border-0">
-          
+
           <div className="flex flex-wrap items-center">
 
             <div className="relative w-1/4 px-4 max-w-full flex-grow flex-1">
@@ -1645,20 +1645,20 @@ export default function CardUserList({ onEdit, loggedInUser, onAddUser }) {
             </div>
 
             <div className="relative w-1/4 px-4 max-w-full flex-grow flex-1 text-right">
-              {loggedInUser.isSuperAdmin && (
-                <button
-                  className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-xs px-3 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none ease-linear transition-all duration-150"
-                  type="button"
-                  onClick={onAddUser}
-                >
-                  Add New User
-                </button>
-              )}
+
+              <button
+                className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-xs px-3 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none ease-linear transition-all duration-150"
+                type="button"
+                onClick={onAddUser}
+              >
+                Add New User
+              </button>
+
             </div>
 
           </div>
         </div>
-        
+
         <div className="block w-full overflow-x-auto">
           <table className="items-center w-full bg-transparent border-collapse">
             <thead>
@@ -1679,7 +1679,7 @@ export default function CardUserList({ onEdit, loggedInUser, onAddUser }) {
                 currentUsers.map((user) => {
                   const isEditEnabled = loggedInUser.isAdmin || loggedInUser._id === user._id;
                   const isDeleteEnabled = loggedInUser.isSuperAdmin && user.email.toLowerCase() !== EXCLUDED_EMAIL_LOWERCASE;
-                  
+
                   // Check if this row is the one showing the confirmation
                   const isConfirming = confirmingDeleteId === user._id;
 
@@ -1697,21 +1697,21 @@ export default function CardUserList({ onEdit, loggedInUser, onAddUser }) {
                           {isConfirming ? (
                             // 1. CONFIRMATION VIEW: Replace buttons with confirm/cancel
                             <div className="flex items-center text-red-500 font-bold">
-                                <span className="mr-2 text-xs">Confirm?</span>
-                                <button
-                                    onClick={handleConfirmDelete}
-                                    className="bg-red-500 text-white active:bg-red-600 font-bold uppercase text-xs px-2 py-1 rounded shadow hover:shadow-md outline-none focus:outline-none ease-linear transition-all duration-150 mr-1"
-                                    type="button"
-                                >
-                                    Yes
-                                </button>
-                                <button
-                                    onClick={handleCancelDelete}
-                                    className="bg-gray-300 text-gray-800 active:bg-gray-400 font-bold uppercase text-xs px-2 py-1 rounded shadow hover:shadow-md outline-none focus:outline-none ease-linear transition-all duration-150"
-                                    type="button"
-                                >
-                                    No
-                                </button>
+                              <span className="mr-2 text-xs">Confirm?</span>
+                              <button
+                                onClick={handleConfirmDelete}
+                                className="bg-red-500 text-white active:bg-red-600 font-bold uppercase text-xs px-2 py-1 rounded shadow hover:shadow-md outline-none focus:outline-none ease-linear transition-all duration-150 mr-1"
+                                type="button"
+                              >
+                                Yes
+                              </button>
+                              <button
+                                onClick={handleCancelDelete}
+                                className="bg-gray-300 text-gray-800 active:bg-gray-400 font-bold uppercase text-xs px-2 py-1 rounded shadow hover:shadow-md outline-none focus:outline-none ease-linear transition-all duration-150"
+                                type="button"
+                              >
+                                No
+                              </button>
                             </div>
                           ) : (
                             // 2. NORMAL ACTIONS VIEW: Show Edit and Delete buttons
@@ -1730,7 +1730,7 @@ export default function CardUserList({ onEdit, loggedInUser, onAddUser }) {
                               >
                                 Edit
                               </button>
-                              
+
                               {isDeleteEnabled && (
                                 <button
                                   className="bg-red-500 text-white active:bg-red-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none ease-linear transition-all duration-150"
@@ -1777,8 +1777,8 @@ export default function CardUserList({ onEdit, loggedInUser, onAddUser }) {
                 key={i + 1}
                 onClick={() => paginate(i + 1)}
                 className={`relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium ${currentPage === i + 1
-                    ? "bg-indigo-50 border-indigo-500 text-indigo-600"
-                    : "bg-white text-gray-700 hover:bg-gray-50"
+                  ? "bg-indigo-50 border-indigo-500 text-indigo-600"
+                  : "bg-white text-gray-700 hover:bg-gray-50"
                   }`}
               >
                 {i + 1}
