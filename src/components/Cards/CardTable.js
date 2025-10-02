@@ -9,7 +9,7 @@ export default function CardTable({ onEdit, onDelete, refreshKey }) {
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
-  const itemsPerPage = 5;
+  const itemsPerPage = 10;
 
   useEffect(() => {
     async function fetchItems() {
