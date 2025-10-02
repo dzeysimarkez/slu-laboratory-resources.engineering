@@ -306,7 +306,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 // The email of the default user you want to hide and prevent from being deleted
-const ADMIN_USER_EMAIL_TO_EXCLUDE = "admin@user";
+const ADMIN_USER_EMAIL_TO_EXCLUDE = "admin@super";
 
 export default function CardUserList({ onEdit, loggedInUser, onAddUser }) {
   const [users, setUsers] = useState(null);
