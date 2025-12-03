@@ -1,4 +1,4 @@
-# SLU Laboratory Resources Management/
+# SLU Laboratory Resources Management
 #### URL
 
  - [SLU RM](https://www.slu-laboratory-resources.engineering/)
