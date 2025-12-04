@@ -8,7 +8,7 @@ SLU or Saint Louis Univerity is a school offering various programs.
 This App is made for SLU-ME (Mechanical Engineering) as part of their requirements for the completion of their course.
 
 ## About this App
-This is a simple app is made for use by SLU-SEA students, teachers, and admin staff.
+This is a simple app is made for use by SLU-ME students, teachers, and admin staff.
 Its purpose is to provide a platform in which they can store records and information about the equipment that their facility has such as the number of item a specific equipment or tool, its corresponding item number/tag, and which category does the item belong to.
 
 ## Author
