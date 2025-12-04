@@ -5,7 +5,7 @@
 
 ## About School
 SLU or Saint Louis Univerity is a school offering various programs.
-This App is made for SLU-SEA (School of Engineering and Architecture) as part of their requirements for the completion of their course.
+This App is made for SLU-ME (Mechanical Engineering) as part of their requirements for the completion of their course.
 
 ## About this App
 This is a simple app is made for use by SLU-SEA students, teachers, and admin staff.
