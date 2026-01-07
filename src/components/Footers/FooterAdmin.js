@@ -10,7 +10,7 @@ export default function FooterAdmin() {
           <div className="flex flex-wrap items-center md:justify-between justify-center">
             <div className="w-full md:w-8/12">
               <div className="text-sm text-blueGray-500 w-fit font-semibold py-1 text-center md:text-left">
-                Copyright © 2025 {" | CYRILL JAMES B. FIDER"}
+                Copyright © 2025 {" | CYRILL JAMES B. FIDER "}
                 <a
                 href="https://https://www.slu-laboratory-resources.engineering/"
                 className="text-blueGray-500 hover:text-blueGray-700 text-sm font-semibold py-1"
